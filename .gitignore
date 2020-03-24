@@ -2,6 +2,7 @@
 # Unity folders and files
 ###
 [Aa]ssets/AssetStoreTools*
+[Aa]ssets/Plugins/GitHub/
 [Bb]uild/
 [Ll]ibrary/
 [Ll]ocal[Cc]ache/
@@ -9,13 +10,14 @@
 [Tt]emp/
 [Uu]nityGenerated/
 [Uu]ser[Ss]ettings/
-/[Bb]uild/
-/[Bb]uilds/
+[Bb]uilds/
+
 
 # file on crash reports
 sysinfo.txt
 
 # Unity3D generated meta files
+GitHub.meta
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
