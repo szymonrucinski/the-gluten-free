@@ -42,7 +42,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     private int queryHighestScore()
     {
-        return 0;
+        return 1;
     }
 
     public void scoreAction(bool isGood, bool isOnShoppingList, Vector3 collisionPoint)
