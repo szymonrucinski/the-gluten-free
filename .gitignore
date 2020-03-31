@@ -2,6 +2,7 @@
 # Unity folders and files
 ###
 [Aa]ssets/AssetStoreTools*
+[Aa]ssets/Plugins/GitHub/
 [Bb]uild/
 [Ll]ibrary/
 [Ll]ocal[Cc]ache/
@@ -9,8 +10,9 @@
 [Tt]emp/
 [Uu]nityGenerated/
 [Uu]ser[Ss]ettings/
-/[Bb]uild/
-/[Bb]uilds/
+[Bb]uilds/
+[Tt]extMesh\ Pro
+
 
 # file on crash reports
 sysinfo.txt
@@ -34,6 +36,7 @@ sysinfo.txt
 *.userprefs
 *.pidb
 .DS_Store
+.vs
 
 ###
 # OS generated
