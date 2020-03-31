@@ -11,13 +11,13 @@
 [Uu]nityGenerated/
 [Uu]ser[Ss]ettings/
 [Bb]uilds/
+[Tt]extMesh\ Pro
 
 
 # file on crash reports
 sysinfo.txt
 
 # Unity3D generated meta files
-GitHub.meta
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
@@ -36,6 +36,7 @@ GitHub.meta
 *.userprefs
 *.pidb
 .DS_Store
+.vs
 
 ###
 # OS generated
