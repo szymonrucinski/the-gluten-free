@@ -42,21 +42,29 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     private int queryHighestScore()
     {
-        return 0;
+        return 1;
     }
 
     public void scoreAction(bool isGood, bool isOnShoppingList, Vector3 collisionPoint)
     {
+        var pointChange = 0;
         if (isGood)
         {
             var multiplier = isOnShoppingList ? shoppingListMultiplier : 1f;
-            score += (int)(goodBasePoints * multiplier);
+            pointChange += (int)(goodBasePoints * multiplier);
         }
         else
         {
-            score -= badBasePoints;
+            pointChange -= badBasePoints;
         }
+        score += pointChange;
         setScore();
+        if (pointChange != 0) setPopup(pointChange, collisionPoint);
+    }
+
+    private static void setPopup(int pointChange, Vector3 collisionPoint)
+    {
+        ScoreChangePopup.create(pointChange, collisionPoint);
     }
 
     private void setScore()
