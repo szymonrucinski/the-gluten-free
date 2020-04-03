@@ -19,7 +19,7 @@ public class TestInputs : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             var isOnShoppingList = Input.GetKeyDown(KeyCode.LeftShift);
-            controller.scoreAction(true, isOnShoppingList, new Vector3(Random.Range(0 , 15),Random.Range(0 , 15), 0));
+            controller.scoreAction(true, isOnShoppingList, Vector3.zero);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {

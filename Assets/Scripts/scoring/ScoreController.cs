@@ -47,24 +47,16 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     public void scoreAction(bool isGood, bool isOnShoppingList, Vector3 collisionPoint)
     {
-        var pointChange = 0;
         if (isGood)
         {
             var multiplier = isOnShoppingList ? shoppingListMultiplier : 1f;
-            pointChange += (int)(goodBasePoints * multiplier);
+            score += (int)(goodBasePoints * multiplier);
         }
         else
         {
-            pointChange -= badBasePoints;
+            score -= badBasePoints;
         }
-        score += pointChange;
         setScore();
-        if (pointChange != 0) setPopup(pointChange, collisionPoint);
-    }
-
-    private static void setPopup(int pointChange, Vector3 collisionPoint)
-    {
-        ScoreChangePopup.create(pointChange, collisionPoint);
     }
 
     private void setScore()
