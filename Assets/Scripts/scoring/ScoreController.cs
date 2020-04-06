@@ -24,7 +24,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
     private int score;
     private int highScore;
     private bool syncHighScore = false;
-    private int highsoreInital;
+    private int highscoreInital;
     private bool scorePlaced = false;
 
     private const int goodBasePoints = 1;
@@ -41,7 +41,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
     private void Start() {
         setScore();
         highScore = queryHighestScore();
-        highsoreInital = highScore;
+        highscoreInital = highScore;
         setHighScore();
     }
 
@@ -90,9 +90,9 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
         if (syncHighScore)
         {
-            if(score < highsoreInital)
+            if(score < highscoreInital)
             {
-                highScore = highsoreInital;
+                highScore = highscoreInital;
             }
             else
             {
