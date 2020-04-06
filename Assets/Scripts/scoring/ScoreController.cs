@@ -15,7 +15,6 @@ public class ScoreController : MonoBehaviour, ScoreAction
 {
     public static ScoreAction Instance;
 
-
     public List<TextMeshPro> scoreTextFields;
     public List<TextMeshPro> highScoreTextFields;
     public List<TextMeshPro> timerTextFields;
@@ -51,6 +50,10 @@ public class ScoreController : MonoBehaviour, ScoreAction
         {
             StreamReader sr = new StreamReader("save.txt");
             String saveData = sr.ReadLine();
+            if(saveData == null)
+            {
+                return 0;
+            }
             String[] saveDataSplit = saveData.Split(':');
             sr.Close();
             return Int32.Parse(saveDataSplit[1]);
