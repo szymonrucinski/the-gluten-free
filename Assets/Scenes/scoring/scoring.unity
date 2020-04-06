@@ -192,6 +192,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -31.100006
       objectReference: {fileID: 0}
+    - target: {fileID: 3522748056887421952, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -79.79999
+      objectReference: {fileID: 0}
     - target: {fileID: 3522748057134665892, guid: 8683f807067641748a28240a3b6a2128,
         type: 3}
       propertyPath: m_Camera
@@ -663,6 +668,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7700761112189933487, guid: 43932d3679c8c50429486c3667cce90f,
         type: 3}
+    - target: {fileID: 3954021316045329064, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: gameTimeInitial
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8683f807067641748a28240a3b6a2128, type: 3}
 --- !u!1 &638909387

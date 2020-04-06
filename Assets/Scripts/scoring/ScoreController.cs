@@ -25,11 +25,12 @@ public class ScoreController : MonoBehaviour, ScoreAction
     private int highScore;
     private bool syncHighScore = false;
     private int highsoreInital;
+    private bool scorePlaced = false;
 
     private const int goodBasePoints = 1;
     private const int badBasePoints = 1;
     public float shoppingListMultiplier = 2.5f;
-    public List<TextMeshPro> highscoreGameOverViewTextfields;
+    public List<TextMeshProUGUI> highscoreGameOverViewTextfields;
 
     private void Awake()
     {
@@ -46,16 +47,16 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     private int queryHighestScore()
     {
-        StreamReader sr = new StreamReader("save.txt");
-        if (sr == null)
+        if(File.Exists("save.txt"))
         {
-            //no save file found
-            return 0;
+            StreamReader sr = new StreamReader("save.txt");
+            String saveData = sr.ReadLine();
+            String[] saveDataSplit = saveData.Split(':');
+            sr.Close();
+            return Int32.Parse(saveDataSplit[1]);
         }
-        String saveData = sr.ReadLine();
-        String[] saveDataSplit = saveData.Split(':');
-        sr.Close();
-        return Int32.Parse(saveDataSplit[1]);
+        //no save file found
+        return 0;
     }
 
     public void scoreAction(bool isGood, bool isOnShoppingList, Vector3 collisionPoint)
@@ -118,22 +119,83 @@ public class ScoreController : MonoBehaviour, ScoreAction
     public void nextTime(float timeLeft)
     {
         var timeString = timeLeft.ToString(CultureInfo.CurrentCulture);
-        // TODO Shorten string
         foreach (var timerTextField in timerTextFields)
         {
-            timerTextField.text = timeString;
+            timerTextField.text = $"{timeLeft:0.###}";
         }
     }
 
     public void gameOverLeaderBoard()
     {
-        if(syncHighScore)
+        String path = "save.txt";
+        List<String> fileData = new List<String>();
+
+        if (File.Exists(path))
         {
-            //when save highscore
+            StreamReader sr = new StreamReader(path);
+            String line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                fileData.Add(line);
+            }
+            sr.Close();
+        }
+         
+        int i = 0;
+        while (i < fileData.Count && scorePlaced == false)
+        {
+            String[] fileDataSplit = fileData[i].Split(':');
+            if (score > Int32.Parse(fileDataSplit[1]))
+            {
+                String oldScore = fileData[i];
+                fileData[i] = Environment.UserName + ':' + score;
+                scorePlaced = true;
+                if (i < 5)
+                {
+                    fileData.Insert(i + 1, oldScore);
+                }
+            }
+            i++;
+        }
+            
+        if (!scorePlaced && fileData.Count < 5)
+        {
+            if(fileData.Count == 0)
+            {
+                fileData.Add(Environment.UserName + ':' + score);
+            }
+            else
+            {
+                fileData.Add(Environment.UserName + ':' + score);
+            }
+            scorePlaced = true;
+        }
+
+        StreamWriter sw = new StreamWriter("save.txt");
+        int j = 0;
+        while (j < fileData.Count)
+        {
+            sw.WriteLine(fileData[j]);
+            j++;
+        }
+        sw.Flush();
+        sw.Close();    
+
+        int fileDataPos = 0;
+        foreach (var highscoreGameOverViewTextfield in highscoreGameOverViewTextfields)
+        {
+            if (fileDataPos < fileData.Count)
+            {
+                String[] fileDataSplit = fileData[fileDataPos].Split(':');
+                highscoreGameOverViewTextfield.text = (fileDataSplit[0]+": "+fileDataSplit[1]).ToString();
+                fileDataPos++;
+            }
+            else
+            {
+                highscoreGameOverViewTextfield.text = " ";
+            }
 
         }
-        //update Textfields
-
     }
 }
 
