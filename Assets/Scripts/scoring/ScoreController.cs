@@ -24,10 +24,12 @@ public class ScoreController : MonoBehaviour, ScoreAction
     private int score;
     private int highScore;
     private bool syncHighScore = false;
+    private int highsoreInital;
 
     private const int goodBasePoints = 1;
     private const int badBasePoints = 1;
     public float shoppingListMultiplier = 2.5f;
+    public List<TextMeshPro> highscoreGameOverViewTextfields;
 
     private void Awake()
     {
@@ -38,6 +40,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
     private void Start() {
         setScore();
         highScore = queryHighestScore();
+        highsoreInital = highScore;
         setHighScore();
     }
 
@@ -86,7 +89,14 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
         if (syncHighScore)
         {
-            highScore = score;
+            if(score < highsoreInital)
+            {
+                highScore = highsoreInital;
+            }
+            else
+            {
+                highScore = score;
+            }
             setHighScore();
         }
         else if (score > highScore)
@@ -114,6 +124,17 @@ public class ScoreController : MonoBehaviour, ScoreAction
             timerTextField.text = timeString;
         }
     }
+
+    public void gameOverLeaderBoard()
+    {
+        if(syncHighScore)
+        {
+            //when save highscore
+
+        }
+        //update Textfields
+
+    }
 }
 
 public interface ScoreAction
@@ -127,4 +148,5 @@ public interface ScoreAction
     void scoreAction(bool isGood, bool isOnShoppingList, Vector3 collisionPoint);
 
     void nextTime(float timeLeft);
+    void gameOverLeaderBoard();
 }
