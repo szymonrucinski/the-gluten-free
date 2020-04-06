@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using System.IO;
 
 // ReSharper disable once CheckNamespace
 public class ScoreController : MonoBehaviour, ScoreAction
@@ -42,7 +43,16 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     private int queryHighestScore()
     {
-        return 1;
+        StreamReader sr = new StreamReader("save.txt");
+        if (sr == null)
+        {
+            //no save file found
+            return 0;
+        }
+        String saveData = sr.ReadLine();
+        String[] saveDataSplit = saveData.Split(':');
+        sr.Close();
+        return Int32.Parse(saveDataSplit[1]);
     }
 
     public void scoreAction(bool isGood, bool isOnShoppingList, Vector3 collisionPoint)
