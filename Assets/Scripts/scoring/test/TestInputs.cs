@@ -19,11 +19,11 @@ public class TestInputs : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             var isOnShoppingList = Input.GetKeyDown(KeyCode.LeftShift);
-            controller.scoreAction(true, isOnShoppingList, new Vector3(Random.Range(0 , 15),Random.Range(0 , 15), 0));
+            controller.scoreAction(true, isOnShoppingList, new Vector3(Random.Range(0 , 15),Random.Range(0 , 15), 10));
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            controller.scoreAction(false, false, Vector3.zero);
+            controller.scoreAction(false, false, new Vector3(Random.Range(0, 15), Random.Range(0, 15), 10));
         }
     }
 }

@@ -218,3 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f266543f6cbed40bc891b445e9b9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  negativeChangeColor: {r: 1, g: 0, b: 0, a: 0}
+  positivChangeColor: {r: 0.027450982, g: 0.86666673, b: 0.19215688, a: 0}

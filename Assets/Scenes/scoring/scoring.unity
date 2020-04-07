@@ -673,6 +673,11 @@ PrefabInstance:
       propertyPath: gameTimeInitial
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3522748057600722673, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 48
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8683f807067641748a28240a3b6a2128, type: 3}
 --- !u!1 &638909387
