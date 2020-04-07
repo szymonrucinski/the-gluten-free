@@ -26,6 +26,8 @@ public class ScoreController : MonoBehaviour, ScoreAction
     private bool syncHighScore = false;
     private int highscoreInital;
     private bool scorePlaced = false;
+    private String saveFilePath = "save.txt";
+    private String saveFilePattern = "^.+:[0-9]+$";
 
     private const int goodBasePoints = 1;
     private const int badBasePoints = 1;
@@ -47,18 +49,16 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     private int queryHighestScore()
     {
-        if(File.Exists("save.txt"))
+        if(File.Exists(saveFilePath))
         {
-            StreamReader streamReader;
-            using (streamReader = new StreamReader("save.txt")) 
+            using (var streamReader = new StreamReader(saveFilePath)) 
             {
                 String saveData = streamReader.ReadLine();
                 if (saveData == null)
                 {
                     return 0;
                 }
-                String pattern = "^.+:[0-9]+$";
-                Regex rgx = new Regex(pattern);
+                Regex rgx = new Regex(saveFilePattern);
 
                 if (rgx.IsMatch(saveData))
                 {
@@ -144,17 +144,14 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     public void gameOverLeaderBoard()
     {
-        String saveFilePath = "save.txt";
         List<String> fileData = new List<String>();
 
         if (File.Exists(saveFilePath))
         {
-            StreamReader streamReader;
-            using (streamReader = new StreamReader(saveFilePath))
+            using (var streamReader = new StreamReader(saveFilePath))
             {
                 String line;
-                String pattern = "^.+:[0-9]+$";
-                Regex rgx = new Regex(pattern);
+                Regex rgx = new Regex(saveFilePattern);
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     if(rgx.IsMatch(line))
@@ -189,8 +186,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
             scorePlaced = true;
         }
 
-        StreamWriter streamWriter;
-        using (streamWriter = new StreamWriter(saveFilePath))
+        using (var streamWriter = new StreamWriter(saveFilePath))
         {
             int j = 0;
             while (j < fileData.Count && j < 5)
