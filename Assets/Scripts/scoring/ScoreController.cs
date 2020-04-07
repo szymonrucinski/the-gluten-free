@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using System.IO;
+using System.Text.RegularExpressions;
 
 // ReSharper disable once CheckNamespace
 public class ScoreController : MonoBehaviour, ScoreAction
@@ -48,15 +49,28 @@ public class ScoreController : MonoBehaviour, ScoreAction
     {
         if(File.Exists("save.txt"))
         {
-            StreamReader sr = new StreamReader("save.txt");
-            String saveData = sr.ReadLine();
-            if(saveData == null)
+            StreamReader streamReader;
+            using (streamReader = new StreamReader("save.txt")) 
             {
-                return 0;
+                String saveData = streamReader.ReadLine();
+                if (saveData == null)
+                {
+                    return 0;
+                }
+                String pattern = "^.+:[0-9]+$";
+                Regex rgx = new Regex(pattern);
+
+                if (rgx.IsMatch(saveData))
+                {
+                    String[] saveDataSplit = saveData.Split(':');
+                    return Int32.Parse(saveDataSplit[1]);
+                }
+                else
+                {
+                    //file data corrupt
+                    return 0;
+                }
             }
-            String[] saveDataSplit = saveData.Split(':');
-            sr.Close();
-            return Int32.Parse(saveDataSplit[1]);
         }
         //no save file found
         return 0;
@@ -130,18 +144,25 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     public void gameOverLeaderBoard()
     {
-        String path = "save.txt";
+        String saveFilePath = "save.txt";
         List<String> fileData = new List<String>();
 
-        if (File.Exists(path))
+        if (File.Exists(saveFilePath))
         {
-            StreamReader sr = new StreamReader(path);
-            String line;
-            while ((line = sr.ReadLine()) != null)
+            StreamReader streamReader;
+            using (streamReader = new StreamReader(saveFilePath))
             {
-                fileData.Add(line);
+                String line;
+                String pattern = "^.+:[0-9]+$";
+                Regex rgx = new Regex(pattern);
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    if(rgx.IsMatch(line))
+                    {
+                        fileData.Add(line);
+                    }
+                }
             }
-            sr.Close();
         }
          
         int i = 0;
@@ -163,26 +184,21 @@ public class ScoreController : MonoBehaviour, ScoreAction
             
         if (!scorePlaced && fileData.Count < 5)
         {
-            if(fileData.Count == 0)
-            {
-                fileData.Add(Environment.UserName + ':' + score);
-            }
-            else
-            {
-                fileData.Add(Environment.UserName + ':' + score);
-            }
+
+            fileData.Add(Environment.UserName + ':' + score);
             scorePlaced = true;
         }
 
-        StreamWriter sw = new StreamWriter("save.txt");
-        int j = 0;
-        while (j < fileData.Count)
+        StreamWriter streamWriter;
+        using (streamWriter = new StreamWriter(saveFilePath))
         {
-            sw.WriteLine(fileData[j]);
-            j++;
+            int j = 0;
+            while (j < fileData.Count && j < 5)
+            {
+                streamWriter.WriteLine(fileData[j]);
+                j++;
+            }
         }
-        sw.Flush();
-        sw.Close();    
 
         int fileDataPos = 0;
         foreach (var highscoreGameOverViewTextfield in highscoreGameOverViewTextfields)
@@ -197,7 +213,6 @@ public class ScoreController : MonoBehaviour, ScoreAction
             {
                 highscoreGameOverViewTextfield.text = " ";
             }
-
         }
     }
 }
