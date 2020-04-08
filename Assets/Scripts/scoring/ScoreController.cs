@@ -8,12 +8,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using System.IO;
+using System.Text.RegularExpressions;
 
 // ReSharper disable once CheckNamespace
 public class ScoreController : MonoBehaviour, ScoreAction
 {
     public static ScoreAction Instance;
-
 
     public List<TextMeshPro> scoreTextFields;
     public List<TextMeshPro> highScoreTextFields;
@@ -23,10 +24,15 @@ public class ScoreController : MonoBehaviour, ScoreAction
     private int score;
     private int highScore;
     private bool syncHighScore = false;
+    private int highscoreInital;
+    private bool scorePlaced = false;
+    private String saveFilePath = "save.txt";
+    private String saveFilePattern = "^.+:[0-9]+$";
 
     private const int goodBasePoints = 1;
     private const int badBasePoints = 1;
     public float shoppingListMultiplier = 2.5f;
+    public List<TextMeshProUGUI> highscoreGameOverViewTextfields;
 
     private void Awake()
     {
@@ -37,12 +43,37 @@ public class ScoreController : MonoBehaviour, ScoreAction
     private void Start() {
         setScore();
         highScore = queryHighestScore();
+        highscoreInital = highScore;
         setHighScore();
     }
 
     private int queryHighestScore()
     {
-        return 1;
+        if(File.Exists(saveFilePath))
+        {
+            using (var streamReader = new StreamReader(saveFilePath)) 
+            {
+                String saveData = streamReader.ReadLine();
+                if (saveData == null)
+                {
+                    return 0;
+                }
+                Regex rgx = new Regex(saveFilePattern);
+
+                if (rgx.IsMatch(saveData))
+                {
+                    String[] saveDataSplit = saveData.Split(':');
+                    return Int32.Parse(saveDataSplit[1]);
+                }
+                else
+                {
+                    //file data corrupt
+                    return 0;
+                }
+            }
+        }
+        //no save file found
+        return 0;
     }
 
     public void scoreAction(bool isGood, bool isOnShoppingList, Vector3 collisionPoint)
@@ -76,7 +107,14 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
         if (syncHighScore)
         {
-            highScore = score;
+            if(score < highscoreInital)
+            {
+                highScore = highscoreInital;
+            }
+            else
+            {
+                highScore = score;
+            }
             setHighScore();
         }
         else if (score > highScore)
@@ -98,10 +136,79 @@ public class ScoreController : MonoBehaviour, ScoreAction
     public void nextTime(float timeLeft)
     {
         var timeString = timeLeft.ToString(CultureInfo.CurrentCulture);
-        // TODO Shorten string
         foreach (var timerTextField in timerTextFields)
         {
-            timerTextField.text = timeString;
+            timerTextField.text = $"{timeLeft:0.###}";
+        }
+    }
+
+    public void gameOverLeaderBoard()
+    {
+        List<String> fileData = new List<String>();
+
+        if (File.Exists(saveFilePath))
+        {
+            using (var streamReader = new StreamReader(saveFilePath))
+            {
+                String line;
+                Regex rgx = new Regex(saveFilePattern);
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    if(rgx.IsMatch(line))
+                    {
+                        fileData.Add(line);
+                    }
+                }
+            }
+        }
+         
+        int i = 0;
+        while (i < fileData.Count && scorePlaced == false)
+        {
+            String[] fileDataSplit = fileData[i].Split(':');
+            if (score > Int32.Parse(fileDataSplit[1]))
+            {
+                String oldScore = fileData[i];
+                fileData[i] = Environment.UserName + ':' + score;
+                scorePlaced = true;
+                if (i < 5)
+                {
+                    fileData.Insert(i + 1, oldScore);
+                }
+            }
+            i++;
+        }
+            
+        if (!scorePlaced && fileData.Count < 5)
+        {
+
+            fileData.Add(Environment.UserName + ':' + score);
+            scorePlaced = true;
+        }
+
+        using (var streamWriter = new StreamWriter(saveFilePath))
+        {
+            int j = 0;
+            while (j < fileData.Count && j < 5)
+            {
+                streamWriter.WriteLine(fileData[j]);
+                j++;
+            }
+        }
+
+        int fileDataPos = 0;
+        foreach (var highscoreGameOverViewTextfield in highscoreGameOverViewTextfields)
+        {
+            if (fileDataPos < fileData.Count)
+            {
+                String[] fileDataSplit = fileData[fileDataPos].Split(':');
+                highscoreGameOverViewTextfield.text = (fileDataSplit[0]+": "+fileDataSplit[1]).ToString();
+                fileDataPos++;
+            }
+            else
+            {
+                highscoreGameOverViewTextfield.text = " ";
+            }
         }
     }
 }
@@ -117,4 +224,5 @@ public interface ScoreAction
     void scoreAction(bool isGood, bool isOnShoppingList, Vector3 collisionPoint);
 
     void nextTime(float timeLeft);
+    void gameOverLeaderBoard();
 }

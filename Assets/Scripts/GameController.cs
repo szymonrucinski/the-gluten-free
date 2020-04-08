@@ -132,6 +132,7 @@ public class GameController : MonoBehaviour
                 break;
             case GameState.GameOver:
                 uiAction.ShowGameOver();
+                scoreAction.gameOverLeaderBoard();
                 break;
             case GameState.Pause:
                 uiAction.ShowPause();
