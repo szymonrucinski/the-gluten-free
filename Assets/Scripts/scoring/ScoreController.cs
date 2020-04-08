@@ -95,7 +95,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     private static void setPopup(int pointChange, Vector3 collisionPoint)
     {
-        ScoreChangePopup.create(pointChange, collisionPoint);
+        ScoreChangePopupFactory.create(pointChange, collisionPoint);
     }
 
     private void setScore()
