@@ -5,23 +5,12 @@ using UnityEngine;
 // ReSharper disable once CheckNamespace
 public class ScoreChangePopupFactory : MonoBehaviour
 {
-    private static ScoreChangePopupFactory _instance = null;
+    public static ScoreChangePopupFactory Instance = null;
 
-    public static ScoreChangePopupFactory Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = Instantiate(Resources.Load<ScoreChangePopupFactory>("../../Prefabs/scoring/ScoreChangePopupFactory"));   
-            }
-            return _instance;
-        }
-    }
 
     private void Awake()
     {
-        _instance = this;
+        Instance = this;
     }
 
     public float moveYSpeed = 20f;
