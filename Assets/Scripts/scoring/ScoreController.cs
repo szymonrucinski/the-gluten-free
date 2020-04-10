@@ -1,44 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using TMPro;
 using UnityEngine;
 using System.IO;
 using System.Text.RegularExpressions;
+using UnityEngine.Serialization;
 
 // ReSharper disable once CheckNamespace
 public class ScoreController : MonoBehaviour, ScoreAction
 {
     public static ScoreAction Instance;
 
+    // UI Text Fields
     public List<TextMeshPro> scoreTextFields;
     public List<TextMeshPro> highScoreTextFields;
     public List<TextMeshPro> timerTextFields;
-    public List<TextMeshPro> streakFields;
+    [FormerlySerializedAs("streakFields")] 
+    public List<TextMeshPro> streakTextFields;
+    [FormerlySerializedAs("highscoreGameOverViewTextfields")] 
+    public List<TextMeshProUGUI> highScoreGameOverViewTextFields;
 
-    public int maxDigitsTimer = 2;
-
+    // Score
     private int score;
     private int highScore;
-    private bool syncHighScore = false;
-    private int highscoreInital;
-    private bool scorePlaced = false;
-    private String saveFilePath = "save.txt";
-    private String saveFilePattern = "^.+:[0-9]+$";
+    private bool syncHighScore;
+    private int highScoreInitial;
+    
+    // Score Settings
+    public int goodBasePoints = 1;
+    public int badBasePoints = 2;
+    public float shoppingListMultiplier = 2.5f;
+    
+    // Score Saves
+    private bool scorePlaced;
+    private const string saveFilePath = "save.txt";
+    private const string saveFilePattern = "^.+:[0-9]+$";
 
     // Streaks
-    private int streakCount = 0;
-    private int streakMultiplier = 0;
-    private float timeDelta = 0; // Time change due to hits and misses
+    private int streakCount;
+    private int streakMultiplier;
+    private float timeDelta; // Time change due to hits and misses
 
     // Streak Settings - T
-    private int maxStreak = 6; // Maximum streak modifier
-    private int streakWeight = 4; // Controls the increase of the streak modifier [more weight = harder to increase]
-
-    private const int goodBasePoints = 1;
-    private const int badBasePoints = 2;
-    public float shoppingListMultiplier = 2.5f;
-    public List<TextMeshProUGUI> highscoreGameOverViewTextfields;
+    public int maxStreak = 6; // Maximum streak modifier
+    public int streakWeight = 4; // Controls the increase of the streak modifier [more weight = harder to increase]
 
     private void Awake()
     {
@@ -50,7 +55,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
     {
         setScore();
         highScore = queryHighestScore();
-        highscoreInital = highScore;
+        highScoreInitial = highScore;
         setHighScore();
     }
 
@@ -60,19 +65,20 @@ public class ScoreController : MonoBehaviour, ScoreAction
         {
             using (var streamReader = new StreamReader(saveFilePath))
             {
-                String saveData = streamReader.ReadLine();
+                var saveData = streamReader.ReadLine();
                 if (saveData == null)
                 {
                     return 0;
                 }
 
-                Regex rgx = new Regex(saveFilePattern);
+                var rgx = new Regex(saveFilePattern);
 
                 if (rgx.IsMatch(saveData))
                 {
-                    String[] saveDataSplit = saveData.Split(':');
-                    return Int32.Parse(saveDataSplit[1]);
+                    var saveDataSplit = saveData.Split(':');
+                    return int.Parse(saveDataSplit[1]);
                 }
+                // ReSharper disable once RedundantIfElseBlock
                 else
                 {
                     //file data corrupt
@@ -118,7 +124,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     public float getTimeDelta()
     {
-        float change = timeDelta;
+        var change = timeDelta;
         timeDelta = 0;
         return change;
     }
@@ -139,15 +145,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
         if (syncHighScore)
         {
-            if (score < highscoreInital)
-            {
-                highScore = highscoreInital;
-            }
-            else
-            {
-                highScore = score;
-            }
-
+            highScore = (score < highScoreInitial) ? highScoreInitial : score;
             setHighScore();
         }
         else if (score > highScore)
@@ -168,7 +166,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     private void setStreak()
     {
-        foreach (var streakField in streakFields)
+        foreach (var streakField in streakTextFields)
         {
             streakField.text = streakCount.ToString() + "\nx" + streakMultiplier.ToString();
         }
@@ -176,7 +174,6 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     public void nextTime(float timeLeft)
     {
-        var timeString = timeLeft.ToString(CultureInfo.CurrentCulture);
         foreach (var timerTextField in timerTextFields)
         {
             timerTextField.text = $"{timeLeft:0.###}";
@@ -185,14 +182,14 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     public void gameOverLeaderBoard()
     {
-        List<String> fileData = new List<String>();
+        var fileData = new List<string>();
 
         if (File.Exists(saveFilePath))
         {
             using (var streamReader = new StreamReader(saveFilePath))
             {
-                String line;
-                Regex rgx = new Regex(saveFilePattern);
+                string line;
+                var rgx = new Regex(saveFilePattern);
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     if (rgx.IsMatch(line))
@@ -203,13 +200,13 @@ public class ScoreController : MonoBehaviour, ScoreAction
             }
         }
 
-        int i = 0;
+        var i = 0;
         while (i < fileData.Count && scorePlaced == false)
         {
-            String[] fileDataSplit = fileData[i].Split(':');
-            if (score > Int32.Parse(fileDataSplit[1]))
+            var fileDataSplit = fileData[i].Split(':');
+            if (score > int.Parse(fileDataSplit[1]))
             {
-                String oldScore = fileData[i];
+                var oldScore = fileData[i];
                 fileData[i] = Environment.UserName + ':' + score;
                 scorePlaced = true;
                 if (i < 5)
@@ -229,7 +226,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
         using (var streamWriter = new StreamWriter(saveFilePath))
         {
-            int j = 0;
+            var j = 0;
             while (j < fileData.Count && j < 5)
             {
                 streamWriter.WriteLine(fileData[j]);
@@ -237,18 +234,18 @@ public class ScoreController : MonoBehaviour, ScoreAction
             }
         }
 
-        int fileDataPos = 0;
-        foreach (var highscoreGameOverViewTextfield in highscoreGameOverViewTextfields)
+        var fileDataPos = 0;
+        foreach (var highScoreGameOverViewTextField in highScoreGameOverViewTextFields)
         {
             if (fileDataPos < fileData.Count)
             {
-                String[] fileDataSplit = fileData[fileDataPos].Split(':');
-                highscoreGameOverViewTextfield.text = (fileDataSplit[0] + ": " + fileDataSplit[1]).ToString();
+                var fileDataSplit = fileData[fileDataPos].Split(':');
+                highScoreGameOverViewTextField.text = fileDataSplit[0] + ": " + fileDataSplit[1];
                 fileDataPos++;
             }
             else
             {
-                highscoreGameOverViewTextfield.text = " ";
+                highScoreGameOverViewTextField.text = " ";
             }
         }
     }
@@ -265,6 +262,7 @@ public interface ScoreAction
     void scoreAction(bool isGood, bool isOnShoppingList, Vector3 collisionPoint);
 
     void nextTime(float timeLeft);
+    
     void gameOverLeaderBoard();
     float getTimeDelta();
 }
