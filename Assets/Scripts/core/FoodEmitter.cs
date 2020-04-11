@@ -7,6 +7,7 @@ public class FoodEmitter : MonoBehaviour
     public GameObject[] Food;
     public float SpawnIntervall;        // Spawn intervall
     public float startDelay = 0;
+    private Vector3 spawnPosition = new Vector3(0.57f, 4.34f, -3.1f);
 
     
     // Start is called before the first frame update
@@ -15,14 +16,9 @@ public class FoodEmitter : MonoBehaviour
         InvokeRepeating("Spawn", startDelay, SpawnIntervall);
     }
 
-    void Update()
-    {
-        //Spawn();
-    }
-
     void Spawn()
     {
-        GameObject emittedFood = Instantiate(Food[Random.Range(0, Food.Length)],new Vector3(0.8239996f, 1.175f,-3.39f),transform.rotation);
+        GameObject emittedFood = Instantiate(Food[Random.Range(0, Food.Length)],spawnPosition,transform.rotation);
     }
 
 
