@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8465773670783422826}
   - component: {fileID: 8465773670783422827}
   m_Layer: 0
-  m_Name: ScoreChangePopupConfig
+  m_Name: ScoreChangePopupFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,5 +46,7 @@ MonoBehaviour:
   moveYSpeed: 5
   disappearTimer: 0.5
   disappearSpeed: 3
-  popupPrefab: {fileID: 7700761112189933487, guid: 43932d3679c8c50429486c3667cce90f,
+  positiveScoreChangeColor: {r: 0, g: 1, b: 0, a: 1}
+  negaticeScoreChangeColor: {r: 1, g: 0, b: 0, a: 1}
+  popupPrefab: {fileID: 4371311162554419697, guid: 43932d3679c8c50429486c3667cce90f,
     type: 3}

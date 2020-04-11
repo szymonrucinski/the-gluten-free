@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 
 
@@ -12,7 +10,7 @@ public interface Timer
     /// Pauses the game and shows the menu.
     /// </summary>
     void pauseTimer();
-    
+
     /// <summary>
     /// Resumes the game.
     /// </summary>
@@ -41,6 +39,11 @@ public interface Timer
     /// </summary>
     /// <returns>true, if the game is over</returns>
     bool isTimeOver();
+
+    /// <summary>
+    /// Adds time to the counter.
+    /// </summary>
+    void addTime(float timeIncrement);
 }
 
 public class TimerImpl : MonoBehaviour, Timer
@@ -73,6 +76,11 @@ public class TimerImpl : MonoBehaviour, Timer
     }
 
     public bool isTimeOver() => time <= 0f;
+
+    public void addTime(float timeIncrement)
+    {
+        time += timeIncrement;
+    }
 
     public void pauseTimer()
     {
