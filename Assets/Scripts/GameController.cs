@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.KeyCode;
@@ -25,7 +23,7 @@ public class GameController : MonoBehaviour
     /// Key Check Functions
     private readonly Func<bool> pauseKeyCheck = () => Input.GetKeyDown(P) || Input.GetKeyDown(Escape);
 
-    
+
     private void Awake()
     {
         Instance = this;
@@ -56,19 +54,19 @@ public class GameController : MonoBehaviour
     {
         if (!timer.isTimeOver())
         {
-            // Game is active
             if (!timer.isPaused())
             {
                 // Game is running
                 
-                
+                // Add bonus time gained by streaks
+                timer.addTime(scoreAction.getTimeDelta());
+
                 // Pause Key Check
                 if (pauseKeyCheck()) PauseGame();
             }
             else
             {
                 // Game is paused
-                
                 
                 // Pause Key Check
                 if (pauseKeyCheck()) StartGame();
