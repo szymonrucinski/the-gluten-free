@@ -5,7 +5,7 @@ using TMPro;
 public class ProductMovement : MonoBehaviour
 {
     private float Speed = 0.04f;
-    private float thrust = 8;
+    private float thrust = 7;
     private GameObject Food;
 
     private Vector3 Move;
@@ -47,10 +47,12 @@ public class ProductMovement : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && transform.position.z > -1.32 && transform.position.z < 0.5)
             {
+                print("start");
                 UpdateShoppingList(tag);
                 bought = true;
                 MoveForwardBool = false;
                 MoveRightBool = true;
+                print("end");
             }
 
             if (MoveForwardBool)
