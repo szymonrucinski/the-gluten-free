@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 // ReSharper disable once CheckNamespace
 public class UiController : MonoBehaviour, UiAction
@@ -14,6 +16,8 @@ public class UiController : MonoBehaviour, UiAction
     public Canvas gameOverCanvas;
 
     public TextMeshPro pauseText;
+    public TextMeshProUGUI pauseAudioSliderLabel;
+    public GameObject pauseAudioSlider;
 
     private void Awake()
     {
@@ -27,6 +31,8 @@ public class UiController : MonoBehaviour, UiAction
         inGameCanvas.enabled = false;
         gameOverCanvas.enabled = false;
         pauseText.enabled = false;
+        pauseAudioSliderLabel.enabled = false;
+        pauseAudioSlider.SetActive(false);
     }
 
     public void ShowInGame()
@@ -35,6 +41,8 @@ public class UiController : MonoBehaviour, UiAction
         inGameCanvas.enabled = true;
         gameOverCanvas.enabled = false;
         pauseText.enabled = false;
+        pauseAudioSliderLabel.enabled = false;
+        pauseAudioSlider.SetActive(false);
     }
 
     public void ShowGameOver()
@@ -43,6 +51,8 @@ public class UiController : MonoBehaviour, UiAction
         inGameCanvas.enabled = false;
         gameOverCanvas.enabled = true;
         pauseText.enabled = false;
+        pauseAudioSliderLabel.enabled = false;
+        pauseAudioSlider.SetActive(false);
     }
 
     public void ShowPause()
@@ -51,6 +61,8 @@ public class UiController : MonoBehaviour, UiAction
         inGameCanvas.enabled = true;
         gameOverCanvas.enabled = false;
         pauseText.enabled = true;
+        pauseAudioSliderLabel.enabled = true;
+        pauseAudioSlider.SetActive(true);
     }
 
 }
