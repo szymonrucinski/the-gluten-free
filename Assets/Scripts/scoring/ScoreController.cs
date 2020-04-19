@@ -13,6 +13,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     // UI Text Fields
     public List<TextMeshPro> scoreTextFields;
+    public List<TextMeshProUGUI> scoreTextFieldsUGUI;
     public List<TextMeshPro> highScoreTextFields;
     public List<TextMeshPro> timerTextFields;
     [FormerlySerializedAs("streakFields")] 
@@ -142,6 +143,11 @@ public class ScoreController : MonoBehaviour, ScoreAction
         {
             textField.text = score.ToString();
         }
+        foreach (var textField in scoreTextFieldsUGUI)
+        {
+            textField.text = score.ToString();
+        }
+
 
         if (syncHighScore)
         {
