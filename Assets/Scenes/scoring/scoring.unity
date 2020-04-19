@@ -542,6 +542,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8138211243876142779, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: highScoreGameOverViewTextFields.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3939005918556579976, guid: 8683f807067641748a28240a3b6a2128,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -582,10 +587,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3522748057134665891, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522748057803888355, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3522748058451323077, guid: 8683f807067641748a28240a3b6a2128,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522748057134665890, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665782746711266821, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.70007324
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8683f807067641748a28240a3b6a2128, type: 3}
