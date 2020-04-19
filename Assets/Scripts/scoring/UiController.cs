@@ -11,9 +11,9 @@ public class UiController : MonoBehaviour, UiAction
 {
     public static UiController Instance;
 
-    public Canvas menuCanvas;
-    public Canvas inGameCanvas;
-    public Canvas gameOverCanvas;
+    public GameObject menuCanvas;
+    public GameObject inGameCanvas;
+    public GameObject gameOverCanvas;
 
     public TextMeshPro pauseText;
     public TextMeshProUGUI pauseAudioSliderLabel;
@@ -27,9 +27,9 @@ public class UiController : MonoBehaviour, UiAction
 
     public void ShowMenu()
     {
-        menuCanvas.enabled = true;
-        inGameCanvas.enabled = false;
-        gameOverCanvas.enabled = false;
+        menuCanvas.SetActive(true);
+        inGameCanvas.SetActive(false);
+        gameOverCanvas.SetActive(false);
         pauseText.enabled = false;
         pauseAudioSliderLabel.enabled = false;
         pauseAudioSlider.SetActive(false);
@@ -37,9 +37,9 @@ public class UiController : MonoBehaviour, UiAction
 
     public void ShowInGame()
     {
-        menuCanvas.enabled = false;
-        inGameCanvas.enabled = true;
-        gameOverCanvas.enabled = false;
+        menuCanvas.SetActive(false);
+        inGameCanvas.SetActive(true);
+        gameOverCanvas.SetActive(false);
         pauseText.enabled = false;
         pauseAudioSliderLabel.enabled = false;
         pauseAudioSlider.SetActive(false);
@@ -47,9 +47,9 @@ public class UiController : MonoBehaviour, UiAction
 
     public void ShowGameOver()
     {
-        menuCanvas.enabled = false;
-        inGameCanvas.enabled = false;
-        gameOverCanvas.enabled = true;
+        menuCanvas.SetActive(false);
+        inGameCanvas.SetActive(false);
+        gameOverCanvas.SetActive(true);
         pauseText.enabled = false;
         pauseAudioSliderLabel.enabled = false;
         pauseAudioSlider.SetActive(false);
@@ -57,9 +57,9 @@ public class UiController : MonoBehaviour, UiAction
 
     public void ShowPause()
     {
-        menuCanvas.enabled = false;
-        inGameCanvas.enabled = true;
-        gameOverCanvas.enabled = false;
+        menuCanvas.SetActive(false);
+        inGameCanvas.SetActive(true);
+        gameOverCanvas.SetActive(false);
         pauseText.enabled = true;
         pauseAudioSliderLabel.enabled = true;
         pauseAudioSlider.SetActive(true);

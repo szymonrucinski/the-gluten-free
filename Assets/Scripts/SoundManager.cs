@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
     [Range(0f, 1f)]
     public float baseVolume = .75f;
 
+    private float muteVol = 0f;
+
     public Slider[] volumeModifiers;
 
     private void Awake()
@@ -71,6 +73,20 @@ public class SoundManager : MonoBehaviour
         foreach (var slider in volumeModifiers)
         {
             slider.value = baseVolume;
+        }
+    }
+
+    public void Mute()
+    {
+        if (Math.Abs(muteVol) < 0.001f)
+        {
+            muteVol = baseVolume;
+            setVolume(0f);
+        }
+        else
+        {
+            setVolume(muteVol);
+            muteVol = 0f;
         }
     }
 }
