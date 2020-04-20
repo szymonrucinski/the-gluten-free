@@ -23,6 +23,9 @@ public class GameController : MonoBehaviour
     /// Key Check Functions
     private readonly Func<bool> pauseKeyCheck = () => Input.GetKeyDown(P) || Input.GetKeyDown(Escape);
 
+    /// GameObjects
+    public GameObject gameEnvironment;
+
 
     private void Awake()
     {
@@ -123,12 +126,15 @@ public class GameController : MonoBehaviour
         {
             case GameState.Menu:
                 uiAction.ShowMenu();
+                gameEnvironment.gameObject.SetActive(false);
                 break;
             case GameState.InGame:
                 uiAction.ShowInGame();
+                gameEnvironment.gameObject.SetActive(true);
                 timer.resumeTimer();
                 break;
             case GameState.GameOver:
+                gameEnvironment.gameObject.SetActive(false);
                 uiAction.ShowGameOver();
                 scoreAction.gameOverLeaderBoard();
                 break;
