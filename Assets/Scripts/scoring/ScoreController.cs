@@ -39,7 +39,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     // Streaks
     private int streakCount;
-    private int streakMultiplier;
+    private int streakMultiplier = 1;
     private float timeDelta; // Time change due to hits and misses
 
     // Streak Settings - T
@@ -58,6 +58,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
         highScore = queryHighestScore();
         highScoreInitial = highScore;
         setHighScore();
+        setStreak();
     }
 
     private int queryHighestScore()
@@ -174,7 +175,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
     {
         foreach (var streakField in streakTextFields)
         {
-            streakField.text = streakCount.ToString() + "\nx" + streakMultiplier.ToString();
+            streakField.text = "x" + streakMultiplier.ToString();
         }
     }
 
