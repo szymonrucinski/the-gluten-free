@@ -212,6 +212,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8798357786470156174}
     m_Modifications:
+    - target: {fileID: 8596626298558540922, guid: 1d2aaadea4e3e554089b738ef5b2a7c3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3063571332663723967}
+    - target: {fileID: 8596626298558540922, guid: 1d2aaadea4e3e554089b738ef5b2a7c3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596626298558540922, guid: 1d2aaadea4e3e554089b738ef5b2a7c3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596626298558540922, guid: 1d2aaadea4e3e554089b738ef5b2a7c3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7786188732492006057, guid: 1d2aaadea4e3e554089b738ef5b2a7c3,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -446,6 +466,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UIPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351603721311892323, guid: 1d2aaadea4e3e554089b738ef5b2a7c3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3063571332663723967}
+    - target: {fileID: 4351603721311892323, guid: 1d2aaadea4e3e554089b738ef5b2a7c3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351603721311892323, guid: 1d2aaadea4e3e554089b738ef5b2a7c3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351603721311892323, guid: 1d2aaadea4e3e554089b738ef5b2a7c3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7658196159010489890, guid: 1d2aaadea4e3e554089b738ef5b2a7c3,
         type: 3}
@@ -1110,3 +1150,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2834687265070978122}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3063571332663723967 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 996747874674725877, guid: 9d78dc85cd34acf4f946dcaa49012a1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2834687265070978122}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9fadf91ab650384da45c1e3c232459b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
