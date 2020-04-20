@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/scoring/scoring.unity
+    guid: 15dd589c6b5eb874dbf14438b66a6e47
   m_configObjects: {}
