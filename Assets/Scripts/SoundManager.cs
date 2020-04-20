@@ -11,6 +11,10 @@ public class SoundManager : MonoBehaviour
     [Range(0f, 1f)]
     public float baseVolume = .75f;
 
+    private string baseVolumeKey = "baseVolume";
+
+    private float muteVol = 0f;
+
     public Slider[] volumeModifiers;
 
     private void Awake()
@@ -21,6 +25,10 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
+            if (PlayerPrefs.HasKey(baseVolumeKey))
+            {
+                baseVolume = PlayerPrefs.GetFloat(baseVolumeKey);
+            }
             Instance = this;
             //DontDestroyOnLoad(gameObject);
             foreach (var s in sounds)
@@ -61,6 +69,9 @@ public class SoundManager : MonoBehaviour
         if (Math.Abs(volume - baseVolume) < 0.001f) return;
         
         var vol = Math.Max(0f, Math.Min(volume, 1f));
+
+        PlayerPrefs.SetFloat(baseVolumeKey, vol);
+
         // Update Volume
         foreach (var sound in sounds)
         {
@@ -71,6 +82,20 @@ public class SoundManager : MonoBehaviour
         foreach (var slider in volumeModifiers)
         {
             slider.value = baseVolume;
+        }
+    }
+
+    public void Mute()
+    {
+        if (Math.Abs(muteVol) < 0.001f)
+        {
+            muteVol = baseVolume;
+            setVolume(0f);
+        }
+        else
+        {
+            setVolume(muteVol);
+            muteVol = 0f;
         }
     }
 }

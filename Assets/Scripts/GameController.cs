@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.SceneManagement;
 using static UnityEngine.KeyCode;
 
@@ -22,6 +23,8 @@ public class GameController : MonoBehaviour
 
     /// Key Check Functions
     private readonly Func<bool> pauseKeyCheck = () => Input.GetKeyDown(P) || Input.GetKeyDown(Escape);
+
+    private readonly Func<bool> muteKeyCheck = () => Input.GetKeyDown(M);
 
 
     private void Awake()
@@ -52,6 +55,9 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        
+        // Mute Toggle
+        if (muteKeyCheck()) SoundManager.Instance.Mute();
         if (!timer.isTimeOver())
         {
             if (!timer.isPaused())
@@ -60,7 +66,6 @@ public class GameController : MonoBehaviour
                 
                 // Add bonus time gained by streaks
                 timer.addTime(scoreAction.getTimeDelta());
-
                 // Pause Key Check
                 if (pauseKeyCheck()) PauseGame();
             }

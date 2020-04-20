@@ -16,14 +16,24 @@ public class TestInputs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (GameController.Instance.currentGameState == GameState.InGame)
         {
-            var isOnShoppingList = Input.GetKeyDown(KeyCode.LeftShift);
-            controller.scoreAction(true, isOnShoppingList, new Vector3(Random.Range(0 , 15),Random.Range(0 , 15), 10));
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            controller.scoreAction(false, false, new Vector3(Random.Range(0, 15), Random.Range(0, 15), 10));
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                var isOnShoppingList = Input.GetKey(KeyCode.LeftShift);
+                controller.scoreAction(true, isOnShoppingList,
+                    new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 10));
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                controller.scoreAction(false, false, new Vector3(Random.Range(0, 15), Random.Range(0, 15), 10));
+            }
+
+            if (Input.GetKeyDown(KeyCode.Minus))
+            {
+                TimerImpl.Instance.addTime(-1.0f);
+            }
         }
     }
 }
