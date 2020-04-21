@@ -13,6 +13,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     // UI Text Fields
     public List<TextMeshPro> scoreTextFields;
+    public List<TextMeshProUGUI> scoreTextFieldsUGUI;
     public List<TextMeshPro> highScoreTextFields;
     public List<TextMeshPro> timerTextFields;
     [FormerlySerializedAs("streakFields")] 
@@ -38,7 +39,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     // Streaks
     private int streakCount;
-    private int streakMultiplier;
+    private int streakMultiplier = 1;
     private float timeDelta; // Time change due to hits and misses
 
     // Streak Settings - T
@@ -57,6 +58,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
         highScore = queryHighestScore();
         highScoreInitial = highScore;
         setHighScore();
+        setStreak();
     }
 
     private int queryHighestScore()
@@ -142,6 +144,11 @@ public class ScoreController : MonoBehaviour, ScoreAction
         {
             textField.text = score.ToString();
         }
+        foreach (var textField in scoreTextFieldsUGUI)
+        {
+            textField.text = score.ToString();
+        }
+
 
         if (syncHighScore)
         {
@@ -168,7 +175,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
     {
         foreach (var streakField in streakTextFields)
         {
-            streakField.text = streakCount.ToString() + "\nx" + streakMultiplier.ToString();
+            streakField.text = "x" + streakMultiplier.ToString();
         }
     }
 
