@@ -181,9 +181,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &947889614 stripped
+--- !u!1 &878088422 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8515486794282332056, guid: 8683f807067641748a28240a3b6a2128,
+  m_CorrespondingSourceObject: {fileID: 7670258208658996641, guid: 8683f807067641748a28240a3b6a2128,
     type: 3}
   m_PrefabInstance: {fileID: 1076990446}
   m_PrefabAsset: {fileID: 0}
@@ -198,6 +198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147710898068586668, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: currentGameState
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8770389986780472584, guid: 8683f807067641748a28240a3b6a2128,
         type: 3}
@@ -498,7 +503,7 @@ PrefabInstance:
         type: 3}
       propertyPath: menuCanvas
       value: 
-      objectReference: {fileID: 947889614}
+      objectReference: {fileID: 0}
     - target: {fileID: 6912861390739432097, guid: 8683f807067641748a28240a3b6a2128,
         type: 3}
       propertyPath: inGameCanvas
@@ -524,6 +529,11 @@ PrefabInstance:
       propertyPath: pauseAudioSlider
       value: 
       objectReference: {fileID: 1793540701}
+    - target: {fileID: 6912861390739432097, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: shoppingListCanvas
+      value: 
+      objectReference: {fileID: 878088422}
     - target: {fileID: 3522748057728957400, guid: 8683f807067641748a28240a3b6a2128,
         type: 3}
       propertyPath: m_textInfo.characterCount
