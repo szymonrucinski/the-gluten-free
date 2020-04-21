@@ -439,6 +439,11 @@ PrefabInstance:
       propertyPath: scoreTextFields.Array.data[1]
       value: 
       objectReference: {fileID: 1437783124}
+    - target: {fileID: 3954021316045329064, guid: 8683f807067641748a28240a3b6a2128,
+        type: 3}
+      propertyPath: gameTimeInitial
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4147710898068586668, guid: 8683f807067641748a28240a3b6a2128,
         type: 3}
       propertyPath: gameEnvironment
@@ -2484,6 +2489,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1632900116}
+  - {fileID: 1706150221}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2664,6 +2670,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1706150220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1706150221}
+  - component: {fileID: 1706150222}
+  m_Layer: 0
+  m_Name: FoodEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1706150221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706150220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1542251107}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1706150222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706150220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dc5d888fadb104bab8e34c5b8aa24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  food:
+  - {fileID: 821274725959080112, guid: 78636dda2aee3194d9e098d37ddff018, type: 3}
+  - {fileID: 6406861484136098557, guid: 33b735d794316774298e0269ea8e1ab9, type: 3}
+  - {fileID: 7134101188779294080, guid: fff100a0bce876943929f3d25a14f2ab, type: 3}
+  - {fileID: 3709607661235594724, guid: a511b8f14feb24141bb5c9e6cacef872, type: 3}
+  spawnIntervall: 5
+  speed: 0.5
+  emitterWidth: 5
+  startDelay: 2
+  lifetime: 5
 --- !u!1 &1793540701 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7727483745038247689, guid: 8683f807067641748a28240a3b6a2128,
@@ -2702,7 +2761,7 @@ PrefabInstance:
     - target: {fileID: 8797260317763613879, guid: f8090a9df34f3ab458188127bfa3086d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8797260317763613879, guid: f8090a9df34f3ab458188127bfa3086d,
         type: 3}
