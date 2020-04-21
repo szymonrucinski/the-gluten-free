@@ -21,6 +21,7 @@ sysinfo.txt
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+Plugins.meta
 
 ###
 # VS/MD solution and project files
@@ -71,3 +72,4 @@ crashlytics-build.properties
 
 #Game
 save.txt
+/out
