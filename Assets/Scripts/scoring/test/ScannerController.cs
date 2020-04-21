@@ -20,8 +20,6 @@ public class ScannerController : MonoBehaviour
         if (GameController.Instance.currentGameState == GameState.InGame)
         {
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
                 var pos = transform.position;
                 laserLine.enabled = true;
                 laserLine.SetPosition(0,pos);
@@ -34,22 +32,17 @@ public class ScannerController : MonoBehaviour
                 {
                     if (HitInfo.collider.CompareTag("good"))
                     {
+                        Debug.Log(HitInfo.point);
                         ScoreController.Instance.scoreAction(true, false, HitInfo.point);
                         Destroy(HitInfo.collider.gameObject);
                     }
                     else if (HitInfo.collider.CompareTag("bad"))
                     {
+                        Debug.Log(HitInfo.point);
                         ScoreController.Instance.scoreAction(false, false, HitInfo.point);
                         Destroy(HitInfo.collider.gameObject);
                     }
                 }
-                
-
-            }
-            else
-            {
-                laserLine.enabled = false;
-            }
         }
     }
 

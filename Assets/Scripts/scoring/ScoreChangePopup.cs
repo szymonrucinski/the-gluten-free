@@ -7,7 +7,7 @@ using UnityEngine;
 // ReSharper disable once CheckNamespace
 public class ScoreChangePopup : MonoBehaviour
 {
-    private TextMeshPro textMesh;
+    public TextMeshPro textMesh;
     private float timestamp;
     private Color textColor;
     private int scoreValue;
@@ -16,7 +16,6 @@ public class ScoreChangePopup : MonoBehaviour
 
     private void Awake()
     {
-        textMesh = transform.GetComponent<TextMeshPro>();
         factory = ScoreChangePopupFactory.Instance;
     }
 

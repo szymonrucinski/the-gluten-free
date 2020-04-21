@@ -48,5 +48,5 @@ MonoBehaviour:
   disappearSpeed: 3
   positiveScoreChangeColor: {r: 0, g: 1, b: 0, a: 1}
   negaticeScoreChangeColor: {r: 1, g: 0, b: 0, a: 1}
-  popupPrefab: {fileID: 4371311162554419697, guid: 43932d3679c8c50429486c3667cce90f,
+  popupPrefab: {fileID: 7099140590289570322, guid: 43932d3679c8c50429486c3667cce90f,
     type: 3}
