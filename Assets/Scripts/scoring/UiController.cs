@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class UiController : MonoBehaviour, UiAction
 {
     public static UiController Instance;
 
-    public GameObject menuCanvas;
+    public GameObject shoppingListCanvas;
     public GameObject inGameCanvas;
     public GameObject gameOverCanvas;
 
@@ -24,10 +25,15 @@ public class UiController : MonoBehaviour, UiAction
         Instance = this;
         pauseText.text = "Pause";
     }
-
+    
     public void ShowMenu()
     {
-        menuCanvas.SetActive(true);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ShowShoppingList()
+    {
+        shoppingListCanvas.SetActive(true);
         inGameCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
         pauseText.enabled = false;
@@ -37,7 +43,7 @@ public class UiController : MonoBehaviour, UiAction
 
     public void ShowInGame()
     {
-        menuCanvas.SetActive(false);
+        shoppingListCanvas.SetActive(false);
         inGameCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         pauseText.enabled = false;
@@ -47,7 +53,7 @@ public class UiController : MonoBehaviour, UiAction
 
     public void ShowGameOver()
     {
-        menuCanvas.SetActive(false);
+        shoppingListCanvas.SetActive(false);
         inGameCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
         pauseText.enabled = false;
@@ -57,7 +63,7 @@ public class UiController : MonoBehaviour, UiAction
 
     public void ShowPause()
     {
-        menuCanvas.SetActive(false);
+        shoppingListCanvas.SetActive(false);
         inGameCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         pauseText.enabled = true;
@@ -70,6 +76,8 @@ public class UiController : MonoBehaviour, UiAction
 public interface UiAction
 {
     void ShowMenu();
+
+    void ShowShoppingList();
 
     void ShowInGame();
 
