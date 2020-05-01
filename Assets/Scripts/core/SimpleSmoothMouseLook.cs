@@ -8,6 +8,8 @@ public class SimpleSmoothMouseLook : MonoBehaviour
     Vector2 _mouseAbsolute;
     Vector2 _smoothMouse;
 
+
+    public bool isEnabledInMenu = false;
     public Vector2 clampInDegrees = new Vector2(360, 180);
     public bool lockCursor;
     public Vector2 sensitivity = new Vector2(2, 2);
@@ -36,7 +38,7 @@ public class SimpleSmoothMouseLook : MonoBehaviour
 
     void Update()
     {
-        if (GameController.Instance.currentGameState == GameState.InGame)
+        if (GameController.Instance.currentGameState == GameState.InGame || isEnabledInMenu)
         {
             // Ensure the cursor is always locked when set
             if (lockCursor)

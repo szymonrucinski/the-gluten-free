@@ -56,13 +56,15 @@ public class TestFoodEmitter : MonoBehaviour
     {
         switch (gameState)
         {
-            case GameState.InGame: StartCoroutine(spawningCoroutine);
+            case GameState.InGame:
+                if (spawningCoroutine != null) StartCoroutine(spawningCoroutine);
                 break;
-            case GameState.Pause: StopCoroutine(spawningCoroutine);
+            case GameState.Pause:
+                if (spawningCoroutine != null) StopCoroutine(spawningCoroutine);
                 break;
             case GameState.SHOW_SHOPPING_LIST:
             case GameState.GameOver: 
-                StopCoroutine(spawningCoroutine);
+                if(spawningCoroutine != null) StopCoroutine(spawningCoroutine);
                 DestroySpawnedObjects();
                 break;
         }
