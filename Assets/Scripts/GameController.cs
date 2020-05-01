@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
     // ReSharper disable once MemberCanBePrivate.Global
     public static GameController Instance;
 
+    public static Action<GameState> OnGameStateChanged = delegate { };
+
     public GameState currentGameState = GameState.InGame;
 
 
@@ -154,6 +156,7 @@ public class GameController : MonoBehaviour
         }
 
         currentGameState = newGameState;
+        OnGameStateChanged(currentGameState);
     }
 }
 
