@@ -98,4 +98,14 @@ public class SoundManager : MonoBehaviour
             muteVol = 0f;
         }
     }
+
+    public void playSuccessSound()
+    {
+        Play("success");
+    }
+
+    public void playFailSound()
+    {
+        Play("fail");
+    }
 }
