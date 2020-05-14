@@ -13,24 +13,14 @@ public class ScannerController : MonoBehaviour
     private InputDevice device;
 
     private bool supportsTrigger;
-    private bool supportsRotation;
-
+    private bool supportHaptics;
     private IEnumerator laserCoroutine;
-    private SimpleSmoothMouseLook ssml;
 
     void Start()
     {
         device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
         laserLine.startWidth = lineWidth;
         laserLine.endWidth = lineWidth;
-        laserLine.enabled = false;
-        ssml = GetComponent<SimpleSmoothMouseLook>();
-
-        //disable SimpleSmoothMouse Script if a VR device with rotation capability was found
-        if (device.TryGetFeatureValue(CommonUsages.deviceRotation, out var rot))
-        {
-            ssml.enabled = false;
-        }
     }
 
     // Update is called once per frame
@@ -39,13 +29,6 @@ public class ScannerController : MonoBehaviour
         if (GameController.Instance.currentGameState != GameState.InGame) return;
 
         supportsTrigger = device.TryGetFeatureValue(CommonUsages.triggerButton, out var shooting);
-        supportsRotation = device.TryGetFeatureValue(CommonUsages.deviceRotation, out var deviceRotation);
-
-        if (supportsRotation)
-        {
-            ssml.enabled = false;
-            this.gameObject.transform.rotation = deviceRotation;
-        }
 
         if (!supportsTrigger && Input.GetButton("Fire1"))
         {
