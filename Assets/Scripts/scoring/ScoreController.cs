@@ -46,6 +46,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
     public int maxStreak = 6; // Maximum streak modifier
     public int streakWeight = 4; // Controls the increase of the streak modifier [more weight = harder to increase]
 
+    public static readonly string KEY_PLAYER_NAME = "playername";
     private void Awake()
     {
         Instance = this;
@@ -208,13 +209,14 @@ public class ScoreController : MonoBehaviour, ScoreAction
         }
 
         var i = 0;
+        var userName = PlayerPrefs.GetString(KEY_PLAYER_NAME);
         while (i < fileData.Count && scorePlaced == false)
         {
             var fileDataSplit = fileData[i].Split(':');
             if (score > int.Parse(fileDataSplit[1]))
             {
                 var oldScore = fileData[i];
-                fileData[i] = Environment.UserName + ':' + score;
+                fileData[i] = userName + ':' + score;
                 scorePlaced = true;
                 if (i < 5)
                 {
@@ -227,7 +229,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
         if (!scorePlaced && fileData.Count < 5)
         {
-            fileData.Add(Environment.UserName + ':' + score);
+            fileData.Add(userName + ':' + score);
             scorePlaced = true;
         }
 

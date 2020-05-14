@@ -12,7 +12,9 @@ public class GameController : MonoBehaviour
     // ReSharper disable once MemberCanBePrivate.Global
     public static GameController Instance;
 
-    public GameState currentGameState = GameState.Menu;
+    public static Action<GameState> OnGameStateChanged = delegate { };
+
+    public GameState currentGameState = GameState.InGame;
 
 
     /// Dependencies
@@ -24,6 +26,8 @@ public class GameController : MonoBehaviour
     /// Key Check Functions
     private readonly Func<bool> pauseKeyCheck = () => Input.GetKeyDown(P) || Input.GetKeyDown(Escape);
 
+    /// GameObjects
+    public GameObject gameEnvironment;
     private readonly Func<bool> muteKeyCheck = () => Input.GetKeyDown(M);
 
 
@@ -84,6 +88,16 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ShoppingList()
+    {
+        SetGameState(GameState.SHOW_SHOPPING_LIST);
+    }
+
     // Used from UI - must be public
     // ReSharper disable once MemberCanBePrivate.Global
     public void StartGame()
@@ -96,13 +110,6 @@ public class GameController : MonoBehaviour
     public void PauseGame()
     {
         SetGameState(GameState.Pause);
-    }
-
-    // Used from UI - must be public
-    // ReSharper disable once MemberCanBePrivate.Global
-    public void BackToMenu()
-    {
-        SetGameState(GameState.Menu);
     }
 
     // Used from UI - must be public
@@ -126,14 +133,17 @@ public class GameController : MonoBehaviour
     {
         switch (newGameState)
         {
-            case GameState.Menu:
-                uiAction.ShowMenu();
+            case GameState.SHOW_SHOPPING_LIST:
+                uiAction.ShowShoppingList();
+                timer.pauseTimer();
                 break;
             case GameState.InGame:
                 uiAction.ShowInGame();
+                gameEnvironment.gameObject.SetActive(true);
                 timer.resumeTimer();
                 break;
             case GameState.GameOver:
+                gameEnvironment.gameObject.SetActive(false);
                 uiAction.ShowGameOver();
                 scoreAction.gameOverLeaderBoard();
                 break;
@@ -146,6 +156,7 @@ public class GameController : MonoBehaviour
         }
 
         currentGameState = newGameState;
+        OnGameStateChanged(currentGameState);
     }
 }
 
@@ -154,9 +165,9 @@ public class GameController : MonoBehaviour
 /// </summary>
 public enum GameState
 {
-    /// Game currently displays the menu canvas. 
-    Menu,
-
+    ///  Game currently displays the shopping list
+    SHOW_SHOPPING_LIST,
+    
     /// Game currently running.
     InGame,
 

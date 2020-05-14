@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/scoring/scoring.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: 3c9f0bcd6ffe86a46b66b488aec7a804
+  - enabled: 1
+    path: Assets/Scenes/level_scoring.unity
     guid: 15dd589c6b5eb874dbf14438b66a6e47
+  - enabled: 1
+    path: Assets/Scenes/level_core.unity
+    guid: b1e18d63b8628194a8fb6c6cf578273b
+  - enabled: 1
+    path: Assets/Scenes/level_scanner.unity
+    guid: bf64d43a5fef3754bab7666b284c5439
   m_configObjects: {}
