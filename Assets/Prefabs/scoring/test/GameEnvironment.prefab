@@ -46,10 +46,10 @@ MonoBehaviour:
   food:
   - {fileID: 821274725959080112, guid: 78636dda2aee3194d9e098d37ddff018, type: 3}
   - {fileID: 6406861484136098557, guid: 33b735d794316774298e0269ea8e1ab9, type: 3}
-  spawnIntervall: 4
+  spawnIntervall: 1
   speed: 0.5
   emitterWidth: 5
-  startDelay: 2
+  startDelay: 1
   lifetime: 10
 --- !u!1 &4321887840993873068
 GameObject:
