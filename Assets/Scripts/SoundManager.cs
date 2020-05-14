@@ -42,7 +42,11 @@ public class SoundManager : MonoBehaviour
 
         foreach (var slider in volumeModifiers)
         {
-            slider.value = baseVolume;
+            try
+            {
+                slider.value = baseVolume;
+            }
+            catch (NullReferenceException ignored) { }
         }
     }
 

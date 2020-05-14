@@ -59,8 +59,8 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     private void Start()
     {
+        soundMangerScript = SoundManager.Instance;
         setScore();
-        soundMangerScript = musicController.GetComponent<SoundManager>();
         highScore = queryHighestScore();
         highScoreInitial = highScore;
         setHighScore();
