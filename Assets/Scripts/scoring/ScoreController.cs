@@ -21,6 +21,10 @@ public class ScoreController : MonoBehaviour, ScoreAction
     [FormerlySerializedAs("highscoreGameOverViewTextfields")] 
     public List<TextMeshProUGUI> highScoreGameOverViewTextFields;
 
+    //ScoreSounds
+    public GameObject musicController;
+    private SoundManager soundMangerScript;
+    
     // Score
     private int score;
     private int highScore;
@@ -55,11 +59,13 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     private void Start()
     {
+        soundMangerScript = SoundManager.Instance;
         setScore();
         highScore = queryHighestScore();
         highScoreInitial = highScore;
         setHighScore();
         setStreak();
+       
     }
 
     private int queryHighestScore()
@@ -104,6 +110,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
             streakMultiplier = calculateStreakMultiplier(streakCount);
             var multiplier = isOnShoppingList ? shoppingListMultiplier : 1f;
             pointChange += (int) (goodBasePoints * multiplier * streakMultiplier);
+            soundMangerScript.playSuccessSound();
         }
         else
         {
@@ -111,6 +118,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
             timeDelta -= 0.5f;
             streakMultiplier = 1;
             pointChange -= badBasePoints;
+            soundMangerScript.playFailSound();
         }
 
         score += pointChange;

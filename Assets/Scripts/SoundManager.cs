@@ -42,7 +42,11 @@ public class SoundManager : MonoBehaviour
 
         foreach (var slider in volumeModifiers)
         {
-            slider.value = baseVolume;
+            try
+            {
+                slider.value = baseVolume;
+            }
+            catch (NullReferenceException ignored) { }
         }
     }
 
@@ -97,5 +101,15 @@ public class SoundManager : MonoBehaviour
             setVolume(muteVol);
             muteVol = 0f;
         }
+    }
+
+    public void playSuccessSound()
+    {
+        Play("success");
+    }
+
+    public void playFailSound()
+    {
+        Play("fail");
     }
 }
