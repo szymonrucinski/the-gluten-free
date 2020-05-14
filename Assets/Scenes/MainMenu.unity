@@ -361,7 +361,7 @@ PrefabInstance:
     - target: {fileID: 6259930617322863115, guid: 1275a49906477d643a747627b4259edc,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: scoring
+      value: level_core
       objectReference: {fileID: 0}
     - target: {fileID: 523686728818658039, guid: 1275a49906477d643a747627b4259edc,
         type: 3}
@@ -987,6 +987,76 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412477913163622493, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412477913163622493, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412477913163622493, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412477913163622493, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 422026570}
+    - target: {fileID: 7412477913163622493, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: openLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412477913163622493, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412477913163622493, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: level_scoring
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504175823747483064, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504175823747483064, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504175823747483064, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504175823747483064, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 422026570}
+    - target: {fileID: 4504175823747483064, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: openLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504175823747483064, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504175823747483064, guid: 1275a49906477d643a747627b4259edc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: level_scanner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1275a49906477d643a747627b4259edc, type: 3}
