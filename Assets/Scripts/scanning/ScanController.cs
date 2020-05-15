@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ScanController : MonoBehaviour
 {
     public static ScanController Instance;
-    private const float dropSpeedMultiplier = 0.01f;
+    private const float dropSpeedMultiplier = 0.04f;
     private readonly Vector3 bagDisplacementVector = new Vector3(-0.3f, -0.5f, -0.3f);
 
     private RaycastHit rayHit;
@@ -18,6 +21,7 @@ public class ScanController : MonoBehaviour
     public GameObject correctScanFX;
     public GameObject wrongScanFX;
     private GameObject toDrop;
+    private GameObject sphere;
     private GameObject cube;
     private GameObject bag;
     private bool hitBlocked;
@@ -40,6 +44,7 @@ public class ScanController : MonoBehaviour
         scoreAction = ScoreController.Instance;
         cube = this.transform.GetChild(0).gameObject;
         bag = GameObject.Find("Bag");
+        sphere = GameObject.Find("Sphere");
         canDropToBag = true;
         timeToNext = 0.0f;
         toDrop = null;
@@ -49,17 +54,24 @@ public class ScanController : MonoBehaviour
 
     }
 
+    void LateUpdate()
+    {
+        lineRenderer.SetPosition(0, cube.transform.position);
+        lineRenderer.SetPosition(1, cube.transform.forward * rayLength);
+        sphere.transform.position = lineRenderer.GetPosition(1);
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(scannedObjects.Count != 0 && canDropToBag)
         {
             canDropToBag = false;
-            timeToNext = 1.0f;
-            toDrop = scannedObjects.Dequeue();
-            toDrop.transform.position = bag.transform.position + new Vector3(0, 0.7f, 0);
+            timeToNext = 0.7f;
+            toDrop = scannedObjects.Dequeue();  
+            toDrop.transform.position = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)) + Camera.main.transform.forward * 0.4f;
             toDrop.SetActive(true);
-            Destroy(toDrop, 1.0f);
+            Destroy(toDrop, 0.7f);
         }
         if (!canDropToBag)
         {
@@ -70,14 +82,12 @@ public class ScanController : MonoBehaviour
             else
             {
                 timeToNext -= Time.deltaTime;
-                toDrop.transform.position += ((bag.transform.position + bagDisplacementVector) - toDrop.transform.position) * dropSpeedMultiplier;
+                toDrop.transform.position += (bag.transform.position + (bag.transform.up * 0.3f) - (bag.transform.right * 0.3f) - (bag.transform.forward * 0.1f) - toDrop.transform.position) * dropSpeedMultiplier;
             }
         }
 
-        lineRenderer.SetPosition(0, cube.transform.position);
-        lineRenderer.SetPosition(1, Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.farClipPlane)));
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayHit, rayLength))
+        if (Physics.Raycast(cube.transform.position, cube.transform.forward, out rayHit, rayLength))
         {
             GameObject target = rayHit.collider.gameObject;
             if (target.tag != "scanned")
