@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class ScanController : MonoBehaviour
@@ -49,6 +50,8 @@ public class ScanController : MonoBehaviour
         timeToNext = 0.0f;
         toDrop = null;
         lineRenderer = transform.GetChild(0).GetComponent<LineRenderer>();
+        lineRenderer.enabled = false;
+        sphere.SetActive(false);
         scannedObjects = new Queue<GameObject>();
         audio = GetComponent<AudioSource>();
 
@@ -56,9 +59,16 @@ public class ScanController : MonoBehaviour
 
     void LateUpdate()
     {
-        lineRenderer.SetPosition(0, cube.transform.position);
-        lineRenderer.SetPosition(1, cube.transform.forward * rayLength);
-        sphere.transform.position = lineRenderer.GetPosition(1);
+        lineRenderer.enabled = false;
+        sphere.SetActive(false);
+        if (Input.GetMouseButton(0))
+        {
+            lineRenderer.enabled = true;
+            sphere.SetActive(true);
+            lineRenderer.SetPosition(0, cube.transform.position);
+            lineRenderer.SetPosition(1, cube.transform.forward * rayLength);
+            sphere.transform.position = lineRenderer.GetPosition(1);
+        }
     }
 
     // Update is called once per frame
@@ -87,7 +97,7 @@ public class ScanController : MonoBehaviour
         }
 
 
-        if (Physics.Raycast(cube.transform.position, cube.transform.forward, out rayHit, rayLength))
+        if (Physics.Raycast(cube.transform.position, cube.transform.forward, out rayHit, rayLength) && Input.GetMouseButton(0))
         {
             GameObject target = rayHit.collider.gameObject;
             if (target.tag != "scanned")
