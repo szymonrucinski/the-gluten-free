@@ -18,13 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/level_scanner.unity
     guid: bf64d43a5fef3754bab7666b284c5439
   m_configObjects:
-<<<<<<< HEAD
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ba81590fe1c8843bab1b600badccc862,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: da4e5a0deb2104822a771a90b1a7cfca,
       type: 2}
     xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 929385f4a79f54f368a0d14ec4026f2c,
-=======
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e0f09de40dc366449a2aaabb4aa06af9,
->>>>>>> 084284b70749f18a662dd6a3bddde7c9dbe4ccf7
       type: 2}
