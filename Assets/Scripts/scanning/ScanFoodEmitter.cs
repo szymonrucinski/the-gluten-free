@@ -21,6 +21,7 @@ public class ScanFoodEmitter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InvokeRepeating("Spawn", startDelay, SpawnIntervall);
     }
 
     public void StopSpawning()
