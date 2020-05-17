@@ -34,6 +34,10 @@ public class ScannerVRController : MonoBehaviour
                 scanFoodEmitter.StopSpawning();
             }
         }
-        if (device.TryGetFeatureValue(CommonUsages.deviceRotation, out deviceRotation)) transform.localRotation = deviceRotation;
+        if (device.TryGetFeatureValue(CommonUsages.deviceRotation, out deviceRotation)) {
+            transform.localRotation = deviceRotation;
+            transform.localRotation *= Quaternion.Euler(0, -90, 0);
+        } 
+
     }
 }

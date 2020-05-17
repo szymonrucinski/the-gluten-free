@@ -60,7 +60,7 @@ PlayerSettings:
   allowedAutorotateToLandscapeLeft: 1
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
-  preserveFramebufferAlpha: 0
+  preserveFramebufferAlpha: 1
   disableDepthAndStencilBuffers: 0
   androidStartInFullscreen: 1
   androidRenderOutsideSafeArea: 1
@@ -121,7 +121,10 @@ PlayerSettings:
     Others: 0
   bundleVersion: 0.1
   preloadedAssets:
-  - {fileID: -1473578248802961977, guid: da4e5a0deb2104822a771a90b1a7cfca, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 929385f4a79f54f368a0d14ec4026f2c, type: 2}
+  - {fileID: -4395411629831992707, guid: da4e5a0deb2104822a771a90b1a7cfca, type: 2}
+  - {fileID: 11400000, guid: ba81590fe1c8843bab1b600badccc862, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -167,7 +170,7 @@ PlayerSettings:
     Android: at.fhv.ScanningTeam
   buildNumber: {}
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 24
+  AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
