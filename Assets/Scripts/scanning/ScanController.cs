@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -44,6 +45,8 @@ public class ScanController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shoppingList = new HashSet<string>();
+        shoppingList.Add("avocado");
         scoreAction = ScoreController.Instance;
         cube = this.transform.GetChild(0).gameObject;
         bag = GameObject.Find("Bag");
@@ -65,7 +68,7 @@ public class ScanController : MonoBehaviour
     {
         lineRenderer.enabled = false;
         sphere.SetActive(false);
-        if (shooting)
+        if(shooting || Input.GetMouseButton(0))
         {
             lineRenderer.enabled = true;
             sphere.SetActive(true);
@@ -102,7 +105,7 @@ public class ScanController : MonoBehaviour
 
         device.TryGetFeatureValue(CommonUsages.triggerButton, out shooting);
 
-        if (Physics.Raycast(cube.transform.position, cube.transform.forward, out rayHit, rayLength) && shooting)
+        if (Physics.Raycast(cube.transform.position, cube.transform.forward, out rayHit, rayLength) && (shooting || Input.GetMouseButton(0)))
         {
             GameObject target = rayHit.collider.gameObject;
             if (target.tag != "scanned")
@@ -111,25 +114,25 @@ public class ScanController : MonoBehaviour
 
                 if (target.tag == "good")
                 {
+                    Instantiate(correctScanFX, target.transform.position, Quaternion.identity);
                     target.tag = "scanned";
                     scannedObjects.Enqueue(target);
                     target.SetActive(false);
-                    /*if (shoppingList.Contains(target.name))
+                    if (shoppingList.Contains(target.name))
                     {
                         scoreAction.scoreAction(true, true, target.transform.position);
                     }
                     else
                     {
                         scoreAction.scoreAction(true, false, target.transform.position);
-                    }*/
-                    Instantiate(correctScanFX, target.transform.position, Quaternion.identity);
+                    }
                 }
                 else if (target.tag == "bad")
                 {
-                    audio.PlayOneShot(smoke);
-                    //scoreAction.scoreAction(false, false, target.transform.position);
-                    Destroy(target);
                     Instantiate(wrongScanFX, target.transform.position, Quaternion.identity);
+                    audio.PlayOneShot(smoke);
+                    scoreAction.scoreAction(false, false, target.transform.position);
+                    Destroy(target);
                 }
             }
         }
