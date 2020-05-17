@@ -45,28 +45,28 @@ public class CameraMovementScript : MonoBehaviour
         {
             moving = true;
             if (animationStart == -1.0f) animationStart = Time.time;
-            Camera.main.transform.position += new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z) * -moveSpeed;
+            transform.position += new Vector3(transform.forward.x, 0.0f, transform.forward.z) * -moveSpeed;
             shakeCamera();
         }
         if (touchpadState.y > 0.0f)
         {
             moving = true;
             if (animationStart == -1.0f) animationStart = Time.time;
-            Camera.main.transform.position += new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z) * moveSpeed;
+            transform.position += new Vector3(transform.forward.x, 0.0f, transform.forward.z) * moveSpeed;
             shakeCamera();
         }
         if (touchpadState.x < 0.0f)
         {
             moving = true;
             if (animationStart == -1.0f) animationStart = Time.time;
-            Camera.main.transform.position += new Vector3(Camera.main.transform.right.x, 0.0f, Camera.main.transform.right.z) * -moveSpeed;
+            transform.position += new Vector3(transform.right.x, 0.0f, transform.right.z) * -moveSpeed;
             shakeCamera();
         }
         if (touchpadState.x > 0.0f)
         {
             if (animationStart == -1.0f) animationStart = Time.time;
             moving = true;
-            Camera.main.transform.position += new Vector3(Camera.main.transform.right.x, 0.0f, Camera.main.transform.right.z) * moveSpeed;
+            transform.position += new Vector3(transform.right.x, 0.0f, transform.right.z) * moveSpeed;
             shakeCamera();
         }
         if (!moving)

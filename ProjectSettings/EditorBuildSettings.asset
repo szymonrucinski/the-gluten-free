@@ -17,4 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level_scanner.unity
     guid: bf64d43a5fef3754bab7666b284c5439
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e0f09de40dc366449a2aaabb4aa06af9,
+      type: 2}

@@ -23,12 +23,12 @@ public class ScanFoodEmitter : MonoBehaviour
     {
     }
 
-    void StopSpawning()
+    public void StopSpawning()
     {
         CancelInvoke();
     }
 
-    void StartSpawning()
+    public void StartSpawning()
     {
         InvokeRepeating("Spawn", startDelay, SpawnIntervall);
     }
