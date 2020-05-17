@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ScanFoodEmitter : MonoBehaviour
 {
+    public static ScanFoodEmitter Instance;
+
     public GameObject[] Food;
     public float SpawnIntervall;        // Spawn intervall
     public float Speed;                 // Emission speed
@@ -12,9 +14,21 @@ public class ScanFoodEmitter : MonoBehaviour
     public float startDelay;
     public float lifeTime;              // time emitted food is active in the scene
 
-    
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
+    {
+    }
+
+    public void StopSpawning()
+    {
+        CancelInvoke();
+    }
+
+    public void StartSpawning()
     {
         InvokeRepeating("Spawn", startDelay, SpawnIntervall);
     }
