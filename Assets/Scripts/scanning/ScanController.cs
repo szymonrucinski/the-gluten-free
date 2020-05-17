@@ -2,15 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class ScanController : MonoBehaviour
 {
     public static ScanController Instance;
     private const float dropSpeedMultiplier = 0.04f;
     private readonly Vector3 bagDisplacementVector = new Vector3(-0.3f, -0.5f, -0.3f);
+
+    private InputDevice device;
+    private bool shooting;
 
     private RaycastHit rayHit;
     private LineRenderer lineRenderer;
@@ -55,13 +57,15 @@ public class ScanController : MonoBehaviour
         scannedObjects = new Queue<GameObject>();
         audio = GetComponent<AudioSource>();
 
+        device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+
     }
 
     void LateUpdate()
     {
         lineRenderer.enabled = false;
         sphere.SetActive(false);
-        if (Input.GetMouseButton(0))
+        if (shooting)
         {
             lineRenderer.enabled = true;
             sphere.SetActive(true);
@@ -96,8 +100,9 @@ public class ScanController : MonoBehaviour
             }
         }
 
+        device.TryGetFeatureValue(CommonUsages.triggerButton, out shooting);
 
-        if (Physics.Raycast(cube.transform.position, cube.transform.forward, out rayHit, rayLength) && Input.GetMouseButton(0))
+        if (Physics.Raycast(cube.transform.position, cube.transform.forward, out rayHit, rayLength) && shooting)
         {
             GameObject target = rayHit.collider.gameObject;
             if (target.tag != "scanned")
