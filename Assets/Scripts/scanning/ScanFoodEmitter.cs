@@ -22,7 +22,6 @@ public class ScanFoodEmitter : MonoBehaviour
     void Spawn()
     { 
         GameObject emittedFood = Instantiate(Food[Random.Range(0, Food.Length)],new Vector3(Random.Range(-EmitterWidth, EmitterWidth), Random.Range(-EmitterHeight, EmitterHeight), 3), Quaternion.identity);
-        emittedFood.tag = Random.Range(0, 2) == 1 ? "good" : "bad";
         Destroy(emittedFood, lifeTime);                                                    // deletes object after it is out of sight
     }
 
