@@ -16,7 +16,6 @@ public class CameraMovementScript : MonoBehaviour
     private float animationStart = -1.0f;
     private float lastX;
     private float lastZ;
-    private Quaternion lastRotation;
     private GameObject initialBagPosition;
     private GameObject initialScannerPosition;
 
@@ -84,9 +83,7 @@ public class CameraMovementScript : MonoBehaviour
 
     void shakeCamera()
     {
-        //bag.transform.position = new Vector3(bag.transform.position.x, initialBagY + 0.2f * Math.Abs(Mathf.Sin(4 * (Time.time - animationStart))), bag.transform.position.z);
-        //scanner.transform.position = new Vector3(scanner.transform.position.x, initialScannerY + 0.2f * Math.Abs(Mathf.Sin(4 * (Time.time - animationStart))), scanner.transform.position.z);
-        bag.transform.position = bag.transform.position + bag.transform.forward * 0.003f * Mathf.Sin(6 * (Time.time - animationStart));
-        scanner.transform.position = scanner.transform.position + scanner.transform.up * 0.003f * Mathf.Sin(6 * (Time.time - animationStart));
+        bag.transform.position = bag.transform.position + bag.transform.forward * 0.004f * Mathf.Sin(6 * (Time.time - animationStart));
+        scanner.transform.position = scanner.transform.position + scanner.transform.up * 0.004f * Mathf.Sin(6 * (Time.time - animationStart));
     }
 }
