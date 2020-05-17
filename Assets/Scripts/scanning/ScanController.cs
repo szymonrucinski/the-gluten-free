@@ -45,7 +45,7 @@ public class ScanController : MonoBehaviour
         scoreAction = ScoreController.Instance;
         cube = this.transform.GetChild(0).gameObject;
         bag = GameObject.Find("Bag");
-        sphere = GameObject.Find("Sphere");
+        sphere = GameObject.Find("ScannerLaserSphere");
         canDropToBag = true;
         timeToNext = 0.0f;
         toDrop = null;

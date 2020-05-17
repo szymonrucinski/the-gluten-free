@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 262104341}
   - component: {fileID: 262104340}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: ScannerLaserSphere
   m_TagString: scanned
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -704,7 +704,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876394587}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1681ffb89b9c4f69bc2183bb68c3f9d, type: 3}
   m_Name: 
@@ -1041,7 +1041,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: f465eed7ffb224d3bab667153118584b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f465eed7ffb224d3bab667153118584b,
         type: 3}
@@ -1051,7 +1051,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: f465eed7ffb224d3bab667153118584b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f465eed7ffb224d3bab667153118584b,
         type: 3}
@@ -1093,6 +1093,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: f465eed7ffb224d3bab667153118584b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: f465eed7ffb224d3bab667153118584b,
         type: 3}
       propertyPath: m_Name
@@ -1118,6 +1123,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1480532302}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1824392238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824392234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a870285bebf594cba83bae08ea35fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1824392239
 MonoBehaviour:
   m_ObjectHideFlags: 0

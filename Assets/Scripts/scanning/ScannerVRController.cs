@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class ScannerVRController : MonoBehaviour
 {
-    List<UnityEngine.XR.InputDevice> rightHandDevices = new List<UnityEngine.XR.InputDevice>();
+    List<UnityEngine.XR.InputDevice> gameControllers = new List<UnityEngine.XR.InputDevice>();
     UnityEngine.XR.InputDevice device;
     Quaternion deviceRotation;
     // Start is called before the first frame update
     void Start()
     {
-        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.RightHand, rightHandDevices);
-        if (rightHandDevices.Count == 1)
+        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.GameController, gameControllers);
+        if (gameControllers.Count == 1)
         {
-            device = rightHandDevices[0];
+            device = gameControllers[0];
             Debug.Log("It's alive");
         }
-        else if (rightHandDevices.Count > 1)
+        else if (gameControllers.Count > 1)
         {
             Debug.Log("Found more than one left hand!");
         }
@@ -30,7 +30,6 @@ public class ScannerVRController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out deviceRotation);
-        transform.rotation = deviceRotation;
+        if(device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out deviceRotation)) transform.rotation = deviceRotation;
     }
 }
