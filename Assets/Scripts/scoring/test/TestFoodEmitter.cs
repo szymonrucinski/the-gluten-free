@@ -16,6 +16,8 @@ public class TestFoodEmitter : MonoBehaviour
 
     public float lifetime = 5;
 
+    private bool started = false;
+
     private IEnumerator spawningCoroutine;
 
     private void Awake()
@@ -28,28 +30,13 @@ public class TestFoodEmitter : MonoBehaviour
         GameController.OnGameStateChanged -= HandleGameStateChange;
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Spawn()
     {
-        spawningCoroutine = Spawn(spawnIntervall);
-    }
-
-    IEnumerator Spawn(float waitTime)
-    {
-        //wait start delay
-        yield return new WaitForSeconds(startDelay);
-        while (true)
-        {
-            var emittedFood = Instantiate(food[Random.Range(0, food.Length)],
-                    new Vector3(Random.Range(-emitterWidth, emitterWidth), 0, 0) + transform.position,
-                    Quaternion.identity);
+        var emittedFood = Instantiate(food[Random.Range(0, food.Length)],
+                    new Vector3(Random.Range(-emitterWidth, emitterWidth), 0, 0) + transform.position, Quaternion.identity);
                 emittedFood.GetComponent<Rigidbody>().velocity = Vector3.up * speed;
+                
                 Destroy(emittedFood, lifetime);
-
-                //wait spawned interval
-                yield return new WaitForSeconds(waitTime);
-        }
     }
 
     private void HandleGameStateChange(GameState gameState)
@@ -57,15 +44,19 @@ public class TestFoodEmitter : MonoBehaviour
         switch (gameState)
         {
             case GameState.InGame:
-                if (spawningCoroutine != null) StartCoroutine(spawningCoroutine);
+                if (!started)
+                {
+                    InvokeRepeating(nameof(Spawn), startDelay, spawnIntervall);
+                    started = true;
+                }
                 break;
-            case GameState.Pause:
-                if (spawningCoroutine != null) StopCoroutine(spawningCoroutine);
-                break;
-            case GameState.SHOW_SHOPPING_LIST:
-            case GameState.GameOver: 
-                if(spawningCoroutine != null) StopCoroutine(spawningCoroutine);
-                DestroySpawnedObjects();
+            case GameState.GameOver:
+                if (started)
+                {
+                    CancelInvoke(nameof(Spawn));
+                    DestroySpawnedObjects();
+                    started = false;
+                }
                 break;
         }
     }

@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.SceneManagement;
 using static UnityEngine.KeyCode;
 
@@ -12,7 +11,7 @@ public class GameController : MonoBehaviour
     // ReSharper disable once MemberCanBePrivate.Global
     public static GameController Instance;
 
-    public static Action<GameState> OnGameStateChanged = delegate { };
+    public static event Action<GameState> OnGameStateChanged = delegate { };
 
     public GameState currentGameState = GameState.InGame;
 
@@ -29,7 +28,6 @@ public class GameController : MonoBehaviour
     /// GameObjects
     public GameObject gameEnvironment;
     private readonly Func<bool> muteKeyCheck = () => Input.GetKeyDown(M);
-
 
     private void Awake()
     {
@@ -102,6 +100,7 @@ public class GameController : MonoBehaviour
     // ReSharper disable once MemberCanBePrivate.Global
     public void StartGame()
     {
+        Debug.Log("Start clicked");
         SetGameState(GameState.InGame);
     }
 
@@ -114,7 +113,7 @@ public class GameController : MonoBehaviour
 
     // Used from UI - must be public
     // ReSharper disable once MemberCanBePrivate.Global
-    private void GameOver()
+    public void GameOver()
     {
         SetGameState(GameState.GameOver);
     }
@@ -135,6 +134,7 @@ public class GameController : MonoBehaviour
         {
             case GameState.SHOW_SHOPPING_LIST:
                 uiAction.ShowShoppingList();
+                gameEnvironment.gameObject.SetActive(false);
                 timer.pauseTimer();
                 break;
             case GameState.InGame:
@@ -143,9 +143,13 @@ public class GameController : MonoBehaviour
                 timer.resumeTimer();
                 break;
             case GameState.GameOver:
-                gameEnvironment.gameObject.SetActive(false);
-                uiAction.ShowGameOver();
-                scoreAction.gameOverLeaderBoard();
+                if (currentGameState != newGameState)
+                {
+                    gameEnvironment.gameObject.SetActive(false);
+                    uiAction.ShowGameOver();
+                    scoreAction.gameOverLeaderBoard();
+                    timer.pauseTimer();
+                }
                 break;
             case GameState.Pause:
                 uiAction.ShowPause();
@@ -177,3 +181,4 @@ public enum GameState
     /// Game currently paused
     Pause
 }
+
