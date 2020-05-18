@@ -19,6 +19,10 @@ public class CameraMovementScript : MonoBehaviour
 
     private InputDevice device;
     private Vector2 touchpadState;
+    //Szymon
+    private Rigidbody rb;
+
+
 
     void Start()
     {
@@ -32,13 +36,21 @@ public class CameraMovementScript : MonoBehaviour
         initialScannerPosition.transform.parent = Camera.main.transform;
         lastX = Camera.main.transform.position.x;
         lastZ = Camera.main.transform.position.z;
-
         device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+
+
+        //Szymon
+        rb = GameObject.Find("Main Camera").GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        //rb.AddForce(transform.position*0.02f);
+        //UnityEngine.Debug.Log("FORCE"+transform.position * 2);
+
         moving = false;
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out touchpadState);
         if (touchpadState.y < 0.0f || Input.GetKey(KeyCode.DownArrow))
@@ -72,7 +84,7 @@ public class CameraMovementScript : MonoBehaviour
         if (!moving)
         {
             animationStart = -1.0f;
-            if (bag.transform.position != initialBagPosition.transform.position && (lastX != Camera.main.transform.position.x || lastZ != Camera.main.transform.position.z))  
+            if (bag.transform.position != initialBagPosition.transform.position && (lastX != Camera.main.transform.position.x || lastZ != Camera.main.transform.position.z))
             {
                 bag.transform.position = Vector3.MoveTowards(bag.transform.position, new Vector3(initialBagPosition.transform.position.x, initialBagPosition.transform.position.y, initialBagPosition.transform.position.z), 1.0f * Time.deltaTime);
                 scanner.transform.position = Vector3.MoveTowards(scanner.transform.position, new Vector3(initialScannerPosition.transform.position.x, initialScannerPosition.transform.position.y, initialScannerPosition.transform.position.z), 1.0f * Time.deltaTime);
@@ -81,7 +93,7 @@ public class CameraMovementScript : MonoBehaviour
             {
                 lastX = Camera.main.transform.position.x;
                 lastZ = Camera.main.transform.position.z;
-            }   
+            }
         }
     }
 

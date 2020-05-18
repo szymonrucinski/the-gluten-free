@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using UnityEngine;
+
 using UnityEngine.XR;
 
 public class ScanController : MonoBehaviour
@@ -75,13 +76,21 @@ public class ScanController : MonoBehaviour
             lineRenderer.SetPosition(0, cube.transform.position);
             lineRenderer.SetPosition(1, cube.transform.forward * rayLength);
             sphere.transform.position = lineRenderer.GetPosition(1);
+
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(scannedObjects.Count != 0 && canDropToBag)
+
+        //Positio
+        UnityEngine.Debug.Log("CUBE "+cube.transform.position);
+        UnityEngine.Debug.Log("CUBE LOCAL" + cube.transform.localPosition);
+        UnityEngine.Debug.Log("SCANNER" + transform.position);
+
+
+        if (scannedObjects.Count != 0 && canDropToBag)
         {
             canDropToBag = false;
             timeToNext = 0.7f;

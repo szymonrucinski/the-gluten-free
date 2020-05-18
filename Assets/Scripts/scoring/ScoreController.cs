@@ -155,7 +155,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
         }
         foreach (var textField in scoreTextFieldsUGUI)
         {
-            textField.text = score.ToString();
+            //textField.text = score.ToString();
         }
 
 
@@ -257,12 +257,12 @@ public class ScoreController : MonoBehaviour, ScoreAction
             if (fileDataPos < fileData.Count)
             {
                 var fileDataSplit = fileData[fileDataPos].Split(':');
-                highScoreGameOverViewTextField.text = fileDataSplit[0] + ": " + fileDataSplit[1];
+                //highScoreGameOverViewTextField.text = fileDataSplit[0] + ": " + fileDataSplit[1];
                 fileDataPos++;
             }
             else
             {
-                highScoreGameOverViewTextField.text = " ";
+                //highScoreGameOverViewTextField.text = " ";
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class ScanFoodEmitter : MonoBehaviour
@@ -22,11 +23,12 @@ public class ScanFoodEmitter : MonoBehaviour
     void Start()
     {
         InvokeRepeating("Spawn", startDelay, SpawnIntervall);
+
     }
 
     public void StopSpawning()
     {
-        CancelInvoke();
+        //CancelInvoke();
     }
 
     public void StartSpawning()
@@ -35,11 +37,8 @@ public class ScanFoodEmitter : MonoBehaviour
     }
 
     void Spawn()
-    { 
-        GameObject emittedFood = Instantiate(Food[Random.Range(0, Food.Length)],new Vector3(Random.Range(-EmitterWidth, EmitterWidth), Random.Range(-EmitterHeight, EmitterHeight), 3), Quaternion.identity);
+    {
+        GameObject emittedFood = Instantiate(Food[Random.Range(0, Food.Length)], new Vector3(Random.Range(-EmitterWidth, EmitterWidth), Random.Range(-EmitterHeight, EmitterHeight), 6), Quaternion.identity);
         Destroy(emittedFood, lifeTime);                                                    // deletes object after it is out of sight
     }
-
-
-
 }

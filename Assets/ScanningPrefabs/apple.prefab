@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: -7516240532885936100}
   - component: {fileID: -5271053337015421246}
   - component: {fileID: 1291051268930846369}
+  - component: {fileID: 7568429297754101177}
   m_Layer: 0
   m_Name: apple
   m_TagString: good
@@ -191,3 +192,15 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3299728104684617711}
   m_Mesh: {fileID: 8455860553770013372, guid: 33cc34603c1184a48bc6749cabf4d141, type: 3}
+--- !u!114 &7568429297754101177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299728104684617711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dec4cca05434567a8240f6f9e1336a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

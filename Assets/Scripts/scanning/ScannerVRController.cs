@@ -22,20 +22,20 @@ public class ScannerVRController : MonoBehaviour
     void Update()
     {
         device.TryGetFeatureValue(CommonUsages.triggerButton, out click);
-        if (gameController.currentGameState == GameState.SHOW_SHOPPING_LIST)
+        if (gameController.currentGameState == GameState.SHOW_SHOPPING_LIST || gameController.currentGameState == GameState.GameOver)
         {
             if (click)
             {
                 gameController.StartGame();
                 scanFoodEmitter.StartSpawning();
             }
-            else
+            if(gameController.currentGameState == GameState.GameOver)
             {
                 scanFoodEmitter.StopSpawning();
             }
         }
         if (device.TryGetFeatureValue(CommonUsages.deviceRotation, out deviceRotation)) {
-            transform.localRotation = deviceRotation;
+            transform.rotation = deviceRotation;
             transform.localRotation *= Quaternion.Euler(0, -90, 0);
         } 
 
