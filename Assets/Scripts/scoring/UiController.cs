@@ -59,6 +59,7 @@ public class UiController : MonoBehaviour, UiAction
         pauseText.enabled = false;
         pauseAudioSliderLabel.enabled = false;
         pauseAudioSlider.SetActive(false);
+
     }
 
     public void ShowPause()

@@ -15,6 +15,7 @@ public class ProductMovementScript : MonoBehaviour
     {
         if (gameController.currentGameState == GameState.InGame) transform.position += new Vector3(0.0f, 0.0f, -0.01f);
 
-        if (gameController.currentGameState == GameState.GameOver) Destroy(this);
+        if (gameController.currentGameState == GameState.GameOver) Destroy(gameObject);
     }
+
 }

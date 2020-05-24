@@ -6,6 +6,8 @@ using UnityEngine;
 public class ScanFoodEmitter : MonoBehaviour
 {
     public static ScanFoodEmitter Instance;
+    public static GameController gameController;
+
 
     public GameObject[] Food;
     public float SpawnIntervall;        // Spawn intervall
@@ -22,17 +24,17 @@ public class ScanFoodEmitter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Spawn", startDelay, SpawnIntervall);
-
+        gameController = GameController.Instance;
     }
 
     public void StopSpawning()
     {
-        //CancelInvoke();
+        CancelInvoke();
     }
 
     public void StartSpawning()
     {
+        gameController.StartGame();
         InvokeRepeating("Spawn", startDelay, SpawnIntervall);
     }
 

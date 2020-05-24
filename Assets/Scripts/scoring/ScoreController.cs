@@ -20,6 +20,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
     public List<TextMeshPro> streakTextFields;
     [FormerlySerializedAs("highscoreGameOverViewTextfields")] 
     public List<TextMeshProUGUI> highScoreGameOverViewTextFields;
+    public GameObject highScoreLabel;
 
     //ScoreSounds
     public GameObject musicController;
@@ -198,6 +199,12 @@ public class ScoreController : MonoBehaviour, ScoreAction
 
     public void gameOverLeaderBoard()
     {
+
+        highScoreLabel = GameObject.Find("HighscoreList_Score");
+        highScoreLabel.GetComponent<TextMeshProUGUI>().text = score.ToString();
+        highScoreLabel.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
+
+
         var fileData = new List<string>();
 
         if (File.Exists(saveFilePath))

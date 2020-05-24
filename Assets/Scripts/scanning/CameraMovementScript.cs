@@ -21,7 +21,10 @@ public class CameraMovementScript : MonoBehaviour
     private Vector2 touchpadState;
     //Szymon
     private Rigidbody rb;
-
+    float frontBlockZ;
+    float backBlockZ;
+    float leftBlockX;
+    float rightBlockX;
 
 
     void Start()
@@ -41,13 +44,19 @@ public class CameraMovementScript : MonoBehaviour
 
         //Szymon
         rb = GameObject.Find("Main Camera").GetComponent<Rigidbody>();
-        
+
+        frontBlockZ = 140;
+        backBlockZ = 80;
+        leftBlockX = -21;
+        rightBlockX = 17.0f;
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        blockMovement();
         //rb.AddForce(transform.position*0.02f);
         //UnityEngine.Debug.Log("FORCE"+transform.position * 2);
 
@@ -102,4 +111,34 @@ public class CameraMovementScript : MonoBehaviour
         bag.transform.position = bag.transform.position + bag.transform.forward * 0.004f * Mathf.Sin(6 * (Time.time - animationStart));
         scanner.transform.position = scanner.transform.position + scanner.transform.up * 0.004f * Mathf.Sin(6 * (Time.time - animationStart));
     }
+
+    void blockMovement()
+    {
+
+        Debug.Log("postionZ" + transform.position.z);
+        Debug.Log("postionX" + transform.position.x);
+
+
+        if (transform.position.z >= frontBlockZ)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, frontBlockZ);
+
+        }
+        if (transform.position.z <= backBlockZ)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, backBlockZ);
+
+        }
+        if (transform.position.x <= leftBlockX)
+        {
+            transform.position = new Vector3(leftBlockX, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x >= rightBlockX)
+        {
+            transform.position = new Vector3(rightBlockX, transform.position.y, transform.position.z);
+        }
+
+    }
 }
+
+

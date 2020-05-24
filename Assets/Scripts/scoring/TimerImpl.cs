@@ -85,7 +85,7 @@ public class TimerImpl : MonoBehaviour, Timer
     public void pauseTimer()
     {
         paused = true;
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
 
     public void resumeTimer()
