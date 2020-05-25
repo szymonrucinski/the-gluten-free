@@ -64,7 +64,7 @@ public class ScoreController : MonoBehaviour, ScoreAction
         setScore();
         highScore = queryHighestScore();
         highScoreInitial = highScore;
-        setHighScore();
+        //setHighScore();
         setStreak();
        
     }
@@ -160,26 +160,26 @@ public class ScoreController : MonoBehaviour, ScoreAction
         }
 
 
-        if (syncHighScore)
-        {
-            highScore = (score < highScoreInitial) ? highScoreInitial : score;
-            setHighScore();
-        }
-        else if (score > highScore)
-        {
-            syncHighScore = true;
-            highScore = score;
-            setHighScore();
-        }
+        //if (syncHighScore)
+        //{
+        //    highScore = (score < highScoreInitial) ? highScoreInitial : score;
+        //    setHighScore();
+        //}
+        //else if (score > highScore)
+        //{
+        //    syncHighScore = true;
+        //    highScore = score;
+        //    setHighScore();
+        //}
     }
 
-    private void setHighScore()
-    {
-        foreach (var highScoreTextField in highScoreTextFields)
-        {
-            highScoreTextField.text = highScore.ToString();
-        }
-    }
+    //private void setHighScore()
+    //{
+    //    foreach (var highScoreTextField in highScoreTextFields)
+    //    {
+    //        highScoreTextField.text = highScore.ToString();
+    //    }
+    //}
 
     private void setStreak()
     {
