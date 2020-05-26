@@ -1,5 +1,4 @@
-# THE GLUTENFREE
-========
+<h1 align="center">THE GLUTENFREE</h1>
 We have created a VR game, its action that takes place in a supermarket. Player has only one objective he has to scan some gluten free products in order to get the highest possible score in a limited amount of time.
 > It is an open source project published here for educational purposes.
 
