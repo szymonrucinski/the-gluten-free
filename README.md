@@ -13,7 +13,7 @@ We have created a VR game, its action that takes place in a supermarket. Player 
  <h3 align="center">SCANNING-TEAM MEMBERS: </h3>
 
 ```
-Developers: Maciej Sputkowski, Szymon Ruciński
+Developers: Maciej Sputowski, Szymon Ruciński
 Designers: Julija Lachmatova, Edward Devos
 Version: v0.1 May 2020
 ```
