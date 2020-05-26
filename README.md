@@ -25,7 +25,7 @@ In order to play our game download the following project on your computer, open 
 adb install apk-file-path
 
 ```
-You can also download it using the following link but we don't guarantee that the latest version will be available[under it](https://appsenjoy.com/download/a0eb101c19192df8ae09555029cbb50a.html "Apk file").
+You can also download it using the following [link](https://appsenjoy.com/download/a0eb101c19192df8ae09555029cbb50a.html "Apk file"). but we don't guarantee that the latest version will be available under it.
 
 
 > Game and project files may contain some components created by other teams. <br/>
