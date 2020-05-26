@@ -6,7 +6,7 @@ using System.Collections;
 public class ProductMovementScript : MonoBehaviour
 {
     private GameController gameController;
-    private Vector3 _startPosition;
+    private Vector3 startPosition;
 
 
 
@@ -14,6 +14,8 @@ public class ProductMovementScript : MonoBehaviour
     void Start()
     {
         gameController = GameController.Instance;
+        transform.position = new Vector3(Random.Range(-10.0f, 10.0f), 0, 40);
+      
 
         
 
@@ -24,7 +26,7 @@ public class ProductMovementScript : MonoBehaviour
     {
         if (gameController.currentGameState == GameState.InGame)
         {
-            transform.position += new Vector3(0.0f, 0.0f, Mathf.Sin(Time.time)/10);
+            transform.position += new Vector3(0.0f, 0.0f,-0.1f);
                 }
 
         if (gameController.currentGameState == GameState.GameOver) Destroy(gameObject);

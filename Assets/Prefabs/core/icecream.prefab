@@ -54,6 +54,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -132,6 +133,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -211,6 +213,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -257,8 +260,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5642576399856992046}
-  - component: {fileID: 7932511594310568082}
   - component: {fileID: 7073473964356390045}
+  - component: {fileID: 7932511594310568082}
+  - component: {fileID: -8974764816403432428}
   m_Layer: 0
   m_Name: icecream
   m_TagString: good
@@ -283,6 +287,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7073473964356390045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652871255594929469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89524f5169ba10a47a82594c9dc6b2b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &7932511594310568082
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -299,7 +315,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7073473964356390045
+--- !u!114 &-8974764816403432428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,6 +324,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8652871255594929469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89524f5169ba10a47a82594c9dc6b2b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 68dec4cca05434567a8240f6f9e1336a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
