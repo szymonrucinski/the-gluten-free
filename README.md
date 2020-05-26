@@ -17,5 +17,16 @@ Designers: Julija Lachmatova, Edward Devos
 Version: v0.1 May 2020
 
 ```
+ <h3 align="center">HOW TO PLAY THE GAME? </h3>
+
+In order to play our game download the following project on your computer, open it in compatible Unity Version we have used *2019.3.7.f1* and build it on your Oculus GO headsets same way as for an Android smartphone. Do not forget about enabling unknown sources.Then it is recommended to sideload APK file to the Oculus using ADB tools. Just execute the follwing command.
+
+```
+adb install apk-file-path
+
+```
+You can also download it using the following link but we don't guarantee that the latest version will be available[under it](https://appsenjoy.com/download/a0eb101c19192df8ae09555029cbb50a.html "Apk file").
+
+
 > Game and project files may contain some components created by other teams. <br/>
 > *Both [Szymon Ruciński](https://github.com/szymonrucinski "Szymon's github") & [Maciej Sputowski](https://github.com/macieksputowski "Maciek's github") are actively looking for an interesting internship offers*
