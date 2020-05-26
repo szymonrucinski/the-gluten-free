@@ -1,5 +1,5 @@
 <h1 align="center">THE GLUTENFREE</h1>
-We have created a VR game, its action that takes place in a supermarket. Player has only one objective he has to scan some gluten free products in order to get the highest possible score in a limited amount of time.
+We have created a VR game, its action that takes place in a supermarket. Player has only one objective he has to scan some gluten free products in order to get the highest possible score in a limited amount of time. <br/>
 
 > Game is an open source project published here for educational purposes.
 
@@ -17,5 +17,5 @@ Designers: Julija Lachmatova, Edward Devos
 Version: v0.1 May 2020
 
 ```
-> Game and project files may contain some components created by other teams.
+> Game and project files may contain some components created by other teams. <br/>
 > *Both [Szymon Ruciński](https://github.com/szymonrucinski "Szymon's github") & [Maciej Sputowski](https://github.com/macieksputowski "Maciek's github") are actively looking for an interesting internship offers*
