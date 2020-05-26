@@ -27,5 +27,6 @@ adb install apk-file-path
 You can also download it using the following [link](https://appsenjoy.com/download/a0eb101c19192df8ae09555029cbb50a.html "Apk file"). but we don't guarantee that the latest version will be available under it.
 
 
-> Game and project files may contain some components created by other teams. <br/>
 > *Both [Szymon Ruciński](https://github.com/szymonrucinski "Szymon's github") & [Maciej Sputowski](https://github.com/macieksputowski "Maciek's github") are actively looking for an interesting internship offers*
+> Game and project files may contain some components created by other teams. <br/>
+
