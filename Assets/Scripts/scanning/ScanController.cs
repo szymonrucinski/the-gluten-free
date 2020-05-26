@@ -10,7 +10,7 @@ using UnityEngine.XR;
 public class ScanController : MonoBehaviour
 {
     public static ScanController Instance;
-    private const float dropSpeedMultiplier = 0.04f;
+    private const float dropSpeedMultiplier = 0.01f;
     private readonly Vector3 bagDisplacementVector = new Vector3(-0.3f, -0.5f, -0.3f);
 
     private InputDevice device;
@@ -94,10 +94,10 @@ public class ScanController : MonoBehaviour
         {
             canDropToBag = false;
             timeToNext = 0.7f;
-            toDrop = scannedObjects.Dequeue();  
-            toDrop.transform.position = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)) + Camera.main.transform.forward * 0.4f;
+            toDrop = scannedObjects.Dequeue();
+            //toDrop.transform.position = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)) + Camera.main.transform.forward * 0.4f;
             toDrop.SetActive(true);
-            Destroy(toDrop, 0.7f);
+            Destroy(toDrop, 0.00f);
         }
         if (!canDropToBag)
         {

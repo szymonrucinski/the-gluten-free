@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3154863371614322216}
   - component: {fileID: 2396133641574243921}
   m_Layer: 0
-  m_Name: broccoli
+  m_Name: ScanningBrocolli
   m_TagString: good
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6406861484136098557}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.53, y: 1.13, z: 0}
-  m_LocalScale: {x: 400, y: 400, z: 400}
+  m_LocalScale: {x: 2000, y: 2000, z: 2000}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
