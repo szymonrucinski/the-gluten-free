@@ -15,7 +15,6 @@ We have created a VR game, its action that takes place in a supermarket. Player 
 Developers: Maciej Sputkowski, Szymon Ruciński
 Designers: Julija Lachmatova, Edward Devos
 Version: v0.1 May 2020
-
 ```
  <h3 align="center">HOW TO PLAY THE GAME? </h3>
 
