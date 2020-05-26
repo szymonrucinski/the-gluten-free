@@ -1,13 +1,14 @@
 <h1 align="center">THE GLUTENFREE</h1>
 We have created a VR game, its action that takes place in a supermarket. Player has only one objective he has to scan some gluten free products in order to get the highest possible score in a limited amount of time. <br/>
 <br/>
-> Game is an open source project published here for educational purposes.
 
 <p align="center">
     <img width="267" src="Images/1.png"/>
     <img width="267" src="Images/2.png"/>
     <img width="267" src="Images/3.png"/>
 </p>
+
+> Game is an open source project published here for educational purposes.
 
  <h3 align="center">SCANNING-TEAM MEMBERS: </h3>
 
