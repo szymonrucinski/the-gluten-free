@@ -24,15 +24,25 @@ public class ScannerVRController : MonoBehaviour
         device.TryGetFeatureValue(CommonUsages.triggerButton, out click);
         if (gameController.currentGameState == GameState.SHOW_SHOPPING_LIST || gameController.currentGameState == GameState.GameOver)
         {
+
+            if (gameController.currentGameState == GameState.GameOver)
+            {
+                device.TryGetFeatureValue(CommonUsages.triggerButton, out click);
+                scanFoodEmitter.StopSpawning();
+                if (click)
+                {
+                    Debug.Log("restart Game");
+                    gameController.RestartGame();
+                }
+
+            }
             if (click)
             {
                 gameController.StartGame();
                 scanFoodEmitter.StartSpawning();
+                click = false;
             }
-            if(gameController.currentGameState == GameState.GameOver)
-            {
-                scanFoodEmitter.StopSpawning();
-            }
+           
         }
         if (device.TryGetFeatureValue(CommonUsages.deviceRotation, out deviceRotation)) {
             transform.rotation = deviceRotation;

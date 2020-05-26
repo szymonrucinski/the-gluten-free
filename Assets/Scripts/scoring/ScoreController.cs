@@ -64,7 +64,6 @@ public class ScoreController : MonoBehaviour, ScoreAction
         setScore();
         highScore = queryHighestScore();
         highScoreInitial = highScore;
-        //setHighScore();
         setStreak();
        
     }
@@ -205,73 +204,73 @@ public class ScoreController : MonoBehaviour, ScoreAction
         highScoreLabel.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
 
 
-        var fileData = new List<string>();
+        //    var fileData = new List<string>();
 
-        if (File.Exists(saveFilePath))
-        {
-            using (var streamReader = new StreamReader(saveFilePath))
-            {
-                string line;
-                var rgx = new Regex(saveFilePattern);
-                while ((line = streamReader.ReadLine()) != null)
-                {
-                    if (rgx.IsMatch(line))
-                    {
-                        fileData.Add(line);
-                    }
-                }
-            }
-        }
+        //    if (File.Exists(saveFilePath))
+        //    {
+        //        using (var streamReader = new StreamReader(saveFilePath))
+        //        {
+        //            string line;
+        //            var rgx = new Regex(saveFilePattern);
+        //            while ((line = streamReader.ReadLine()) != null)
+        //            {
+        //                if (rgx.IsMatch(line))
+        //                {
+        //                    fileData.Add(line);
+        //                }
+        //            }
+        //        }
+        //    }
 
-        var i = 0;
-        var userName = PlayerPrefs.GetString(KEY_PLAYER_NAME);
-        while (i < fileData.Count && scorePlaced == false)
-        {
-            var fileDataSplit = fileData[i].Split(':');
-            if (score > int.Parse(fileDataSplit[1]))
-            {
-                var oldScore = fileData[i];
-                fileData[i] = userName + ':' + score;
-                scorePlaced = true;
-                if (i < 5)
-                {
-                    fileData.Insert(i + 1, oldScore);
-                }
-            }
+        //    var i = 0;
+        //    var userName = PlayerPrefs.GetString(KEY_PLAYER_NAME);
+        //    while (i < fileData.Count && scorePlaced == false)
+        //    {
+        //        var fileDataSplit = fileData[i].Split(':');
+        //        if (score > int.Parse(fileDataSplit[1]))
+        //        {
+        //            var oldScore = fileData[i];
+        //            fileData[i] = userName + ':' + score;
+        //            scorePlaced = true;
+        //            if (i < 5)
+        //            {
+        //                fileData.Insert(i + 1, oldScore);
+        //            }
+        //        }
 
-            i++;
-        }
+        //        i++;
+        //    }
 
-        if (!scorePlaced && fileData.Count < 5)
-        {
-            fileData.Add(userName + ':' + score);
-            scorePlaced = true;
-        }
+        //    if (!scorePlaced && fileData.Count < 5)
+        //    {
+        //        fileData.Add(userName + ':' + score);
+        //        scorePlaced = true;
+        //    }
 
-        using (var streamWriter = new StreamWriter(saveFilePath))
-        {
-            var j = 0;
-            while (j < fileData.Count && j < 5)
-            {
-                streamWriter.WriteLine(fileData[j]);
-                j++;
-            }
-        }
+        //    using (var streamWriter = new StreamWriter(saveFilePath))
+        //    {
+        //        var j = 0;
+        //        while (j < fileData.Count && j < 5)
+        //        {
+        //            streamWriter.WriteLine(fileData[j]);
+        //            j++;
+        //        }
+        //    }
 
-        var fileDataPos = 0;
-        foreach (var highScoreGameOverViewTextField in highScoreGameOverViewTextFields)
-        {
-            if (fileDataPos < fileData.Count)
-            {
-                var fileDataSplit = fileData[fileDataPos].Split(':');
-                //highScoreGameOverViewTextField.text = fileDataSplit[0] + ": " + fileDataSplit[1];
-                fileDataPos++;
-            }
-            else
-            {
-                //highScoreGameOverViewTextField.text = " ";
-            }
-        }
+        //    var fileDataPos = 0;
+        //    foreach (var highScoreGameOverViewTextField in highScoreGameOverViewTextFields)
+        //    {
+        //        if (fileDataPos < fileData.Count)
+        //        {
+        //            var fileDataSplit = fileData[fileDataPos].Split(':');
+        //            //highScoreGameOverViewTextField.text = fileDataSplit[0] + ": " + fileDataSplit[1];
+        //            fileDataPos++;
+        //        }
+        //        else
+        //        {
+        //            //highScoreGameOverViewTextField.text = " ";
+        //        }
+        //    }
     }
 }
 
