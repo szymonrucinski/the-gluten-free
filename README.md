@@ -21,7 +21,7 @@ Version: v0.1 May 2020
 
 In order to play our game download the following project on your computer, open it in compatible Unity Version we have used *2019.3.7.f1* and build it on your Oculus GO headsets same way as for an Android smartphone. Do not forget about enabling unknown sources.Then it is recommended to sideload APK file to the Oculus using ADB tools. Just execute the follwing command.
 
-```
+```bash
 adb install apk-file-path
 ```
 You can also download it using the following [link](https://appsenjoy.com/download/a0eb101c19192df8ae09555029cbb50a.html "Apk file"). but we don't guarantee that the latest version will be available under it.
