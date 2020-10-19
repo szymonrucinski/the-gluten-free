@@ -1,4 +1,6 @@
-<h1 align="center">THE GLUTENFREE</h1>
+<p align="center">
+    <img width="450" src="Images/logo.png"/>
+</p>
 We have created a VR game, its action that takes place in a supermarket. Player has only one objective he has to scan some gluten free products in order to get the highest possible score in a limited amount of time. <br/>
 <br/>
 
@@ -10,14 +12,13 @@ We have created a VR game, its action that takes place in a supermarket. Player 
 
 > Game is an open source project published here for educational purposes.
 
- <h3 align="center">SCANNING-TEAM MEMBERS: </h3>
+ <h3 align="left">SCANNING-TEAM MEMBERS: </h3>
 
-```
-Developers: Maciej Sputowski, Szymon Ruciński
-Designers: Julija Lachmatova, Edward Devos
-Version: v0.1 May 2020
-```
- <h3 align="center">HOW TO PLAY THE GAME? </h3>
+| Developers	| Maciej Sputowski 	|   Szymon Ruciński	|
+|---	|---------	|--- |
+| Designers	| Julija Lachmatova   	| Edward Devos 	|
+
+ <h3 align="left">HOW TO PLAY THE GAME? </h3>
 
 In order to play our game download the following project on your computer, open it in compatible Unity Version we have used *2019.3.7.f1* and build it on your Oculus GO headsets same way as for an Android smartphone. Do not forget about enabling unknown sources.Then it is recommended to sideload APK file to the Oculus using ADB tools. Just execute the follwing command.
 
