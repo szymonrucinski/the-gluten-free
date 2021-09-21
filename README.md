@@ -10,7 +10,15 @@ We have created a VR game, its action that takes place in a supermarket. Player 
     <img width="267" src="Images/3.png"/>
 </p>
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=wCd-qGt54t8)
+<iframe
+    width="640"
+    height="480"
+    src="https://www.youtube.com/embed/wCd-qGt54t8"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+>
+</iframe>
 
 > Game is an open source project published here for educational purposes.
 
